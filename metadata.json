@@ -1,0 +1,6 @@
+{
+  "name": "Pahlawan Sirkular Desa - Team Battle Edition",
+  "description": "Aplikasi Game Kuis Interaktif Klasikal Edukasi Sampah, UMKM, dan Ketahanan Pangan untuk SD.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

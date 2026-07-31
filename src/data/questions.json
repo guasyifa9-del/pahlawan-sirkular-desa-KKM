@@ -1,0 +1,390 @@
+{
+  "game_title": "Pahlawan Sirkular Desa - Team Battle",
+  "version": "1.0.0",
+  "levels": [
+    {
+      "level_id": 1,
+      "theme_name": "Misi Kota Bersih (Pengelolaan Sampah)",
+      "mascot": "Kompi",
+      "theme_color": "#4CAF50",
+      "questions": [
+        {
+          "id": 1,
+          "question": "Sisa apel, kulit pisang, dan daun kering termasuk jenis sampah apa?",
+          "options": [
+            "A. Sampah Anorganik",
+            "B. Sampah Organik",
+            "C. Sampah Berbahaya"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "education_message": "Sampah organik berasal dari makhluk hidup dan bisa membusuk secara alami di dalam tanah."
+        },
+        {
+          "id": 2,
+          "question": "Apa yang akan terjadi kalau kita mengolah sisa makanan dan daun kering dengan benar?",
+          "options": [
+            "A. Berubah menjadi plastik",
+            "B. Menjadi bau selamanya",
+            "C. Berubah menjadi pupuk kompos yang menyuburkan tanah"
+          ],
+          "correct_answer": "C",
+          "correct_index": 2,
+          "education_message": "Kompos adalah 'vitamin' alami untuk tanaman yang dibuat dari sampah organik."
+        },
+        {
+          "id": 3,
+          "question": "Botol plastik minuman bekas paling tepat dibuang ke tong sampah berwarna apa?",
+          "options": [
+            "A. Kuning (Anorganik)",
+            "B. Hijau (Organik)",
+            "C. Merah (Berbahaya)"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "education_message": "Tong kuning khusus untuk barang-barang yang tidak mudah busuk seperti plastik, kaleng, dan kaca."
+        },
+        {
+          "id": 4,
+          "question": "Berapa lama waktu yang dibutuhkan agar botol plastik bisa hancur sendiri di dalam tanah?",
+          "options": [
+            "A. 1 minggu",
+            "B. 1 tahun",
+            "C. Ratusan tahun"
+          ],
+          "correct_answer": "C",
+          "correct_index": 2,
+          "education_message": "Plastik sangat awet di bumi! Itulah sebabnya kita harus mendaur ulangnya agar tidak menumpuk."
+        },
+        {
+          "id": 5,
+          "question": "Untuk mengurangi sampah plastik saat jajan atau belanja, kebiasaan terbaik apa yang harus kita lakukan?",
+          "options": [
+            "A. Membawa tas belanja kain dan botol minum sendiri dari rumah",
+            "B. Meminta kantong plastik yang banyak ke pedagang",
+            "C. Membuang plastik belanjaan ke sungai"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "education_message": "Langkah pertama menyelamatkan bumi adalah Reduce (mengurangi) penggunaan plastik sekali pakai."
+        },
+        {
+          "id": 6,
+          "question": "Apa keuntungan utama warga desa jika menabung di 'Bank Sampah'?",
+          "options": [
+            "A. Mendapat tumpukan sampah baru",
+            "B. Sampah yang dikumpulkan bisa ditukar menjadi uang atau emas",
+            "C. Rumah menjadi sempit"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "education_message": "Di Bank Sampah, barang bekas yang dipilah punya nilai jual dan bisa jadi tabungan masa depan."
+        },
+        {
+          "id": 7,
+          "question": "Ada hewan kecil bernama Maggot (larva BSF) yang sangat ramah lingkungan. Apa makanan kesukaan Maggot?",
+          "options": [
+            "A. Besi dan kaca",
+            "B. Sisa makanan dan sampah dapur yang membusuk",
+            "C. Plastik dan kertas"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "education_message": "Maggot membantu memakan sampah dapur dengan sangat cepat dan tubuhnya bisa jadi pakan ikan!"
+        },
+        {
+          "id": 8,
+          "question": "Baterai bekas jam dinding tidak boleh dibuang ke tempat sampah biasa karena termasuk sampah...",
+          "options": [
+            "A. B3 (Bahan Berbahaya dan Beracun)",
+            "B. Organik yang bisa dimakan",
+            "C. Kertas daur ulang"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "education_message": "Baterai mengandung zat kimia yang bisa meracuni tanah dan air, jadi harus dikumpulkan khusus."
+        },
+        {
+          "id": 9,
+          "question": "Apa bahaya terbesar jika kita sering membuang sampah sembarangan ke sungai desa?",
+          "options": [
+            "A. Air sungai jadi super jernih",
+            "B. Aliran air tersumbat dan memicu bencana banjir saat hujan",
+            "C. Ikan-ikan di sungai jadi gembira"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "education_message": "Sungai bukanlah tempat sampah. Menjaga sungai bersih berarti menjaga desa dari banjir."
+        },
+        {
+          "id": 10,
+          "question": "Apa arti dari semboyan 3R dalam menjaga kebersihan bumi?",
+          "options": [
+            "A. Run, Read, Rest (Lari, Baca, Istirahat)",
+            "B. Red, Rice, Road (Merah, Nasi, Jalan)",
+            "C. Reduce, Reuse, Recycle (Kurangi, Pakai Ulang, Daur Ulang)"
+          ],
+          "correct_answer": "C",
+          "correct_index": 2,
+          "education_message": "Ini adalah 3 jurus rahasia untuk menjadi pahlawan lingkungan penakluk sampah!"
+        }
+      ]
+    },
+    {
+      "level_id": 2,
+      "theme_name": "Misi Pasar Kreatif (Ekonomi Sirkular Berbasis UMKM)",
+      "mascot": "Kreati",
+      "theme_color": "#2196F3",
+      "questions": [
+        {
+          "id": 11,
+          "question": "Tumpukan kain perca (sisa jahitan celana/baju) di desa paling bagus diolah oleh pengrajin menjadi apa?",
+          "options": [
+            "A. Dibuang dan dibakar di kebun",
+            "B. Dijahit kembali menjadi tas, keset, atau bantal yang cantik",
+            "C. Dipendam di dalam tanah"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "education_message": "Limbah yang semula tidak berharga bisa bernilai tinggi jika kita kreatif mengolahnya!"
+        },
+        {
+          "id": 12,
+          "question": "Apa kepanjangan dari UMKM yang sering menjadi tulang punggung ekonomi desa kita?",
+          "options": [
+            "A. Usaha Makan Kerupuk Malam",
+            "B. Usaha Mikro, Kecil, dan Menengah",
+            "C. Unit Mesin Keliling Mandiri"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "education_message": "UMKM adalah sebutan untuk usaha-usaha kreatif milik warga, seperti toko kerajinan atau warung kripik lokal."
+        },
+        {
+          "id": 13,
+          "question": "Mengapa kita disarankan untuk lebih rajin membeli produk camilan atau kerajinan hasil karya tetangga di desa?",
+          "options": [
+            "A. Membantu ekonomi tetangga agar desa kita makin maju dan sejahtera",
+            "B. Karena barang di mall sudah habis",
+            "C. Agar tetangga jadi sombong"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "education_message": "Membeli produk lokal berputar kembali untuk kebaikan dan kemajuan desa kita sendiri (ekonomi sirkular)."
+        },
+        {
+          "id": 14,
+          "question": "Botol plastik bekas pewangi pakaian bisa diubah oleh ibu-ibu UMKM menjadi barang bernilai jual, contohnya...",
+          "options": [
+            "A. Bahan makanan ringan",
+            "B. Pot bunga gantung yang dilukis indah",
+            "C. Bahan bakar motor"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "education_message": "Daur ulang (upcycle) mengubah barang bekas menjadi barang baru dengan fungsi yang jauh lebih menarik."
+        },
+        {
+          "id": 15,
+          "question": "Agar keripik singkong buatan UMKM desa kita laris manis saat dijual ke kota, apa yang harus diperhatikan?",
+          "options": [
+            "A. Ditaruh di dalam kresek hitam yang kotor",
+            "B. Dikemas di dalam bungkus yang rapi, bersih, dan bergambar menarik",
+            "C. Disembunyikan di bawah meja"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "education_message": "Kemasan (packaging) yang menarik dan bersih membuat orang yakin dan tertarik membeli produk desa."
+        },
+        {
+          "id": 16,
+          "question": "Minyak goreng bekas pakai (jelantah) di dapur jangan langsung dibuang ke selokan! Minyak ini bisa diolah UMKM menjadi...",
+          "options": [
+            "A. Sabun cuci batang atau lilin aromaterapi",
+            "B. Minyak wangi tubuh",
+            "C. Minuman herbal"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "education_message": "Membuang jelantah ke selokan mencemari air. Mengolahnya jadi sabun/lilin menghasilkan uang tambahan!"
+        },
+        {
+          "id": 17,
+          "question": "Bungkus ramah lingkungan alternatif pengganti styrofoam berbahan kimia untuk makanan tradisional desa adalah...",
+          "options": [
+            "A. Daun pisang atau daun jati",
+            "B. Plastik bening tebal",
+            "C. Kertas timah"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "education_message": "Daun pisang mudah mendegradasi jadi tanah dan membuat aroma makanan tradisional jauh lebih harum!"
+        },
+        {
+          "id": 18,
+          "question": "Apa keunggulan produk mainan anak-anak yang dibuat dari kardus bekas hasil daur ulang?",
+          "options": [
+            "A. Harganya sangat mahal melampaui robot besi",
+            "B. Ramah lingkungan, aman dimainkan, dan mengurangi sampah kertas",
+            "C. Sangat berat saat diangkat"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "education_message": "Kreativitas membuat mainan dari kardus bekas membuktikan keseruan tidak harus merusak alam."
+        },
+        {
+          "id": 19,
+          "question": "Jika kelompok UMKM desa berhasil menjual barang kerajinan dari limbah plastik, apa dampaknya bagi lingkungan desa?",
+          "options": [
+            "A. Desa menjadi semakin kotor dan bau",
+            "B. Tidak ada perubahan sama sekali",
+            "C. Lingkungan desa jadi bersih dari sampah dan warga mendapat penghasilan"
+          ],
+          "correct_answer": "C",
+          "correct_index": 2,
+          "education_message": "Inilah hebatnya ekonomi sirkular: alam bersih, dompet warga pun ikut terisi!"
+        },
+        {
+          "id": 20,
+          "question": "Apa yang harus kita rasakan saat memakai tas sekolah hasil rajutan dari plastik daur ulang buatan UMKM desa?",
+          "options": [
+            "A. Bangga karena unik, keren, dan ikut menyelamatkan bumi",
+            "B. Malu dan ingin menyembunyikannya",
+            "C. Sedih karena tidak dibelikan tas impor"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "education_message": "Memakai produk ramah lingkungan adalah tanda anak pintar yang peduli pada masa depan bumi."
+        }
+      ]
+    },
+    {
+      "level_id": 3,
+      "theme_name": "Misi Kebun Gizi (Ketahanan Pangan)",
+      "mascot": "Gizi",
+      "theme_color": "#FF9800",
+      "questions": [
+        {
+          "id": 21,
+          "question": "Selain nasi dari beras, apa contoh makanan pokok bergizi khas desa yang bikin perut kenyang dan berenergi?",
+          "options": [
+            "A. Roti tawar manis dan cokelat batangan",
+            "B. Singkong, ubi jalar, jagung, dan talas",
+            "C. Mie instan berbumbu"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "education_message": "Indonesia kaya akan sumber karbohidrat alami dari kebun desa yang sangat sehat bagi tubuh."
+        },
+        {
+          "id": 22,
+          "question": "Apa yang dimaksud dengan program 'Kebun Gizi' di pekarangan rumah?",
+          "options": [
+            "A. Taman untuk bermain bola di dalam rumah",
+            "B. Memanfaatkan halaman kosong untuk menanam sayuran dan buah sendiri",
+            "C. Membeli sayuran import di toko mewah"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "education_message": "Pekarangan yang ditanami sayur membuat keluarga kita bisa panen makanan sehat setiap hari secara gratis."
+        },
+        {
+          "id": 23,
+          "question": "Apa itu 'Budikdamber' yang sering dilakukan warga desa untuk menghasilkan lauk pauk segar?",
+          "options": [
+            "A. Budidaya Ikan (seperti Lele) dan sayuran (seperti Kangkung) di dalam satu ember",
+            "B. Bikin kue dadar di ember",
+            "C. Berenang bersama ikan di sungai"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "education_message": "Budikdamber hemat air dan tempat! Kita bisa panen ikan sekaligus sayur dari satu ember saja."
+        },
+        {
+          "id": 24,
+          "question": "Agar sayuran bayam dan kangkung di kebun sekolah tumbuh subur tanpa bahan kimia berbahaya, kita sebaiknya menyiramnya dengan...",
+          "options": [
+            "A. Air sabun cucian piring",
+            "B. Pupuk organik cair dari rendaman kompos sisa makanan",
+            "C. Air panas mendidih"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "education_message": "Pupuk organik menyuburkan tanah secara alami dan membuat sayuran lebih sehat saat dimakan."
+        },
+        {
+          "id": 25,
+          "question": "Mengapa kita harus menghabiskan nasi dan lauk yang ada di piring kita saat makan?",
+          "options": [
+            "A. Supaya piringnya pecah",
+            "B. Menghargai jerih payah petani dan mencegah penumpukan sampah makanan",
+            "C. Karena dipaksa oleh guru sekolah"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "education_message": "Sampah makanan (food waste) yang menumpuk di tempat pembuangan menghasilkan gas rumah kaca penyebab pemanasan global."
+        },
+        {
+          "id": 26,
+          "question": "Tanaman sayur apa yang paling mudah ditanam dengan cepat di dalam pot atau polybag di halaman rumah?",
+          "options": [
+            "A. Kangkung, bayam, cabai, dan tomat",
+            "B. Pohon kelapa dan pohon durian",
+            "C. Pohon beringin"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "education_message": "Hanya butuh waktu 3 sampai 4 minggu, sayuran hijau seperti kangkung sudah siap dipetik dan dimasak!"
+        },
+        {
+          "id": 27,
+          "question": "Mengapa ikan lele atau nila dari kolam desa sangat baik untuk pertumbuhan otak anak-anak SD?",
+          "options": [
+            "A. Karena ikan berenang sangat cepat",
+            "B. Karena mengandung protein yang sangat tinggi untuk kecerdasan",
+            "C. Karena warnanya menarik"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "education_message": "Rajin makan ikan buatan budidaya desa membuat anak-anak tumbuh tinggi, sehat, dan pintar di sekolah."
+        },
+        {
+          "id": 28,
+          "question": "Bagaimana cara sederhana menyembunyikan 'tabungan pangan' agar desa kita tidak kehabisan tanaman saat musim kemarau?",
+          "options": [
+            "A. Menyimpan dan mengeringkan biji-biji sayuran tua untuk ditanam kembali",
+            "B. Membeli makanan instan sebanyak-banyaknya",
+            "C. Mengubur sayuran segar di dalam pasir"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "education_message": "Menyimpan benih berkualitas adalah kunci agar kita bisa terus menanam tanpa harus selalu membeli bibit baru."
+        },
+        {
+          "id": 29,
+          "question": "Apa manfaat utama jika desa kita mampu menghasilkan beras, sayur, dan ikan sendiri (Mandiri Pangan)?",
+          "options": [
+            "A. Warga desa harus ke kota setiap hari",
+            "B. Warga tidak akan kelaparan walau harga makanan di pasar sedang mahal",
+            "C. Sekolah diliburkan selamanya"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "education_message": "Desa yang mandiri pangan adalah desa yang kuat, sehat, dan tidak mudah terpengaruh krisis ekonomi luar."
+        },
+        {
+          "id": 30,
+          "question": "Jika kita memelihara ayam di belakang rumah, apa dua hasil pangan utama yang bisa kita nikmati untuk sarapan?",
+          "options": [
+            "A. Telur segar dan daging ayam yang bergizi",
+            "B. Bulu ayam dan suaranya yang keras",
+            "C. Susu ayam dan keju"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "education_message": "Hewan ternak kecil di pekarangan menyumbang kebutuhan protein harian keluarga dengan sangat mudah dan murah."
+        }
+      ]
+    }
+  ]
+}
