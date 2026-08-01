@@ -12,6 +12,7 @@ import {
   saveGameState,
   clearSavedGameState,
 } from './utils/storage';
+import { fetchQuestionsFromCSV } from './utils/googleSheets';
 import { sound } from './utils/audio';
 import { Navbar } from './components/Navbar';
 import { LiveScoreboard } from './components/LiveScoreboard';
@@ -37,6 +38,9 @@ export default function App() {
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
   const [savedStateExists, setSavedStateExists] = useState<boolean>(false);
 
+  const [customQuizData, setCustomQuizData] = useState<QuizData | null>(null);
+  const [isFetchingQuestions, setIsFetchingQuestions] = useState<boolean>(false);
+
   // Cek apakah ada sesi permainan tersimpan di localStorage saat pertama kali mount
   useEffect(() => {
     const saved = loadSavedGameState();
@@ -45,8 +49,30 @@ export default function App() {
     }
   }, []);
 
+  // Ambil soal dinamis dari Google Sheets jika URL diset
+  useEffect(() => {
+    if (settings.googleSheetsQuestionsUrl) {
+      setIsFetchingQuestions(true);
+      fetchQuestionsFromCSV(settings.googleSheetsQuestionsUrl, quizData)
+        .then(data => {
+          setCustomQuizData(data);
+        })
+        .catch(err => {
+          console.error("Gagal memuat soal dari Google Sheets, menggunakan soal default.", err);
+          setCustomQuizData(null);
+        })
+        .finally(() => {
+          setIsFetchingQuestions(false);
+        });
+    } else {
+      setCustomQuizData(null);
+    }
+  }, [settings.googleSheetsQuestionsUrl]);
+
+  const activeQuizData = customQuizData || quizData;
+
   // Metadata level yang sedang aktif
-  const currentLevel: Level = quizData.levels.find(
+  const currentLevel: Level = activeQuizData.levels.find(
     (l) => l.level_id === selectedLevelId
   ) || {
     level_id: selectedLevelId,
@@ -67,7 +93,7 @@ export default function App() {
 
     setSelectedLevelId(levelId);
 
-    const questionsToPlay = getQuestionsForLevel(quizData.levels, levelId);
+    const questionsToPlay = getQuestionsForLevel(activeQuizData.levels, levelId);
     setActiveQuestions(questionsToPlay);
     setCurrentQuestionIndex(0);
     setPhase('gameplay');
@@ -84,7 +110,7 @@ export default function App() {
     setTeams(saved.teams);
     setSelectedLevelId(saved.levelId);
 
-    const questionsToPlay = getQuestionsForLevel(quizData.levels, saved.levelId);
+    const questionsToPlay = getQuestionsForLevel(activeQuizData.levels, saved.levelId);
     const maxIndex = Math.max(0, questionsToPlay.length - 1);
     const safeIndex = Math.min(Math.max(0, saved.questionIndex || 0), maxIndex);
 
@@ -146,12 +172,21 @@ export default function App() {
   /** Lanjut ke misi/level berikutnya setelah victory */
   const handleNextMission = () => {
     const nextLevelId = selectedLevelId + 1;
-    if (nextLevelId <= quizData.levels.length) {
+    if (nextLevelId <= activeQuizData.levels.length) {
       handleStartGame(teams, nextLevelId);
     } else {
       setPhase('setup');
     }
   };
+
+  if (isFetchingQuestions) {
+    return (
+      <div className="min-h-screen bg-[#F0F9FF] flex flex-col items-center justify-center font-sans gap-4">
+        <div className="w-12 h-12 border-4 border-[#4CAF50] border-t-[#FFEB3B] rounded-full animate-spin"></div>
+        <h2 className="text-lg md:text-xl font-black text-[#1B5E20] text-center px-4">Mengambil Soal Dinamis dari Google Sheets...</h2>
+      </div>
+    );
+  }
 
   return (
     <div translate="no" className="notranslate min-h-screen bg-[#F0F9FF] text-slate-900 flex flex-col font-sans select-none overflow-x-hidden border-[8px] sm:border-[12px] border-[#4CAF50]">
@@ -173,7 +208,7 @@ export default function App() {
       <main className="flex-1 flex flex-col">
         {phase === 'setup' && (
           <SetupScreen
-            levels={quizData.levels}
+            levels={activeQuizData.levels}
             onStartGame={handleStartGame}
             savedStateExists={savedStateExists}
             onResumeSavedGame={handleResumeSavedGame}
@@ -203,7 +238,7 @@ export default function App() {
           <VictoryScreen
             teams={teams}
             level={currentLevel}
-            onNextMission={selectedLevelId < quizData.levels.length ? handleNextMission : undefined}
+            onNextMission={selectedLevelId < activeQuizData.levels.length ? handleNextMission : undefined}
             onPlayAgain={() => setPhase('setup')}
             webhookUrl={settings.googleSheetsWebhookUrl}
           />

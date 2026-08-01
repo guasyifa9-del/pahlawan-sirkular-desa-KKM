@@ -12,6 +12,7 @@ export const defaultSettings: GameSettings = {
   sfxVolume: 0.8,
   soundEnabled: true,
   googleSheetsWebhookUrl: '',
+  googleSheetsQuestionsUrl: '',
   autoPlayBGM: true,
 };
 

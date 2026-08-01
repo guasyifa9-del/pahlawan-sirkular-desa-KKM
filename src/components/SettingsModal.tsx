@@ -110,6 +110,24 @@ export const SettingsModal = ({
               Masukkan URL Apps Script Google Sheet untuk otomatis menyimpan skor nilai seluruh kelompok seusai game.
             </p>
           </div>
+
+          {/* Google Sheets Questions Data URL */}
+          <div>
+            <label className="block text-slate-800 font-extrabold mb-1.5 flex items-center gap-2">
+              <Link className="w-4 h-4 text-[#4CAF50]" />
+              URL Google Sheets Soal Kuis (Format CSV):
+            </label>
+            <input
+              type="url"
+              placeholder="https://docs.google.com/spreadsheets/d/.../pub?output=csv"
+              value={form.googleSheetsQuestionsUrl || ''}
+              onChange={(e) => setForm({ ...form, googleSheetsQuestionsUrl: e.target.value })}
+              className="w-full bg-[#F0F9FF] border-[3px] border-[#4CAF50] rounded-xl px-3 py-2 text-slate-900 font-mono text-xs outline-none focus:border-[#2E7D32]"
+            />
+            <p className="text-[10px] text-slate-500 font-bold mt-1">
+              (Opsional) Masukkan URL &quot;Publish to the web&quot; berformat CSV dari Google Sheets untuk mengubah soal kuis secara dinamis.
+            </p>
+          </div>
         </div>
 
         <div className="mt-6 flex justify-end gap-3 pt-4 border-t-2 border-slate-200">

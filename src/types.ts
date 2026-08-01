@@ -47,5 +47,6 @@ export interface GameSettings {
   sfxVolume: number;
   soundEnabled: boolean;
   googleSheetsWebhookUrl: string;
+  googleSheetsQuestionsUrl: string;
   autoPlayBGM: boolean;
 }
