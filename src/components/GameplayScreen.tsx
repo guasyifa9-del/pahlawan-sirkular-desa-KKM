@@ -355,13 +355,13 @@ export const GameplayScreen = ({
       </div>
 
       {/* Operator Footer Control Bar */}
-      <div className="max-w-7xl mx-auto w-full bg-white border-[3px] border-[#4CAF50] rounded-2xl p-2.5 flex flex-wrap items-center justify-between gap-2 shadow-[3px_3px_0px_#2E7D32]">
+      <div className="max-w-7xl mx-auto w-full bg-white border-[3px] border-[#4CAF50] rounded-2xl p-2.5 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-2 shadow-[3px_3px_0px_#2E7D32]">
         {/* Navigation buttons */}
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col sm:flex-row w-full sm:w-auto items-center gap-2">
           <button
             onClick={onPrevQuestion}
             disabled={currentQuestionIndex === 0}
-            className={`px-3 py-2 rounded-xl font-black text-xs flex items-center gap-1 border-2 cursor-pointer ${
+            className={`w-full sm:w-auto px-3 py-2.5 sm:py-2 rounded-xl font-black text-xs sm:text-sm flex justify-center items-center gap-1 border-2 cursor-pointer ${
               currentQuestionIndex === 0
                 ? 'bg-slate-100 text-slate-400 border-slate-300 cursor-not-allowed'
                 : 'bg-slate-200 hover:bg-slate-300 text-slate-800 border-slate-400 shadow-[2px_2px_0px_#94A3B8]'
@@ -373,7 +373,7 @@ export const GameplayScreen = ({
           {!isAnswerRevealed ? (
             <button
               onClick={handleRevealAnswer}
-              className="px-6 py-2.5 bg-[#FF9800] hover:bg-[#F57C00] text-white font-black text-xs sm:text-sm rounded-xl shadow-[3px_3px_0px_#E65100] border-2 border-[#E65100] flex items-center gap-2 cursor-pointer uppercase tracking-wide"
+              className="w-full sm:w-auto px-6 py-3 sm:py-2.5 bg-[#FF9800] hover:bg-[#F57C00] text-white font-black text-xs sm:text-sm rounded-xl shadow-[3px_3px_0px_#E65100] border-2 border-[#E65100] flex justify-center items-center gap-2 cursor-pointer uppercase tracking-wide"
             >
               <Eye className="w-4 h-4" />
               Tampilkan Jawaban (Tekan A / Enter)
@@ -381,7 +381,7 @@ export const GameplayScreen = ({
           ) : (
             <button
               onClick={handleAdvance}
-              className="px-6 py-2.5 bg-[#4CAF50] hover:bg-emerald-600 text-white font-black text-xs sm:text-sm rounded-xl shadow-[3px_3px_0px_#2E7D32] border-2 border-[#2E7D32] flex items-center gap-2 cursor-pointer uppercase tracking-wide"
+              className="w-full sm:w-auto px-6 py-3 sm:py-2.5 bg-[#4CAF50] hover:bg-emerald-600 text-white font-black text-xs sm:text-sm rounded-xl shadow-[3px_3px_0px_#2E7D32] border-2 border-[#2E7D32] flex justify-center items-center gap-2 cursor-pointer uppercase tracking-wide"
             >
               {!isLastQuestion ? (
                 <>

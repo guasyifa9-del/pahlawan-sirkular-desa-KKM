@@ -94,27 +94,27 @@ export const SetupScreen = ({
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex items-center justify-center gap-3 mb-6">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
           <button
             onClick={() => setActiveTab('teams')}
-            className={`px-6 py-2.5 rounded-2xl font-black text-sm md:text-base flex items-center gap-2 transition-all cursor-pointer ${
+            className={`w-full sm:w-auto px-4 sm:px-6 py-2.5 rounded-2xl font-black text-xs sm:text-sm md:text-base flex items-center justify-center gap-2 transition-all cursor-pointer ${
               activeTab === 'teams'
-                ? 'bg-[#FFEB3B] text-[#1B5E20] border-[3px] border-[#FBC02D] shadow-[4px_4px_0px_#F9A825] scale-105'
+                ? 'bg-[#FFEB3B] text-[#1B5E20] border-[3px] border-[#FBC02D] shadow-[4px_4px_0px_#F9A825] sm:scale-105'
                 : 'bg-white text-slate-700 border-[3px] border-slate-300 hover:bg-slate-50 shadow-[2px_2px_0px_#CBD5E1]'
             }`}
           >
-            <Users className="w-5 h-5 text-[#4CAF50]" />
+            <Users className="w-4 h-4 sm:w-5 sm:h-5 text-[#4CAF50]" />
             1. Atur Kelompok Siswa ({teams.length} Tim)
           </button>
           <button
             onClick={() => setActiveTab('mission')}
-            className={`px-6 py-2.5 rounded-2xl font-black text-sm md:text-base flex items-center gap-2 transition-all cursor-pointer ${
+            className={`w-full sm:w-auto px-4 sm:px-6 py-2.5 rounded-2xl font-black text-xs sm:text-sm md:text-base flex items-center justify-center gap-2 transition-all cursor-pointer ${
               activeTab === 'mission'
-                ? 'bg-[#FFEB3B] text-[#1B5E20] border-[3px] border-[#FBC02D] shadow-[4px_4px_0px_#F9A825] scale-105'
+                ? 'bg-[#FFEB3B] text-[#1B5E20] border-[3px] border-[#FBC02D] shadow-[4px_4px_0px_#F9A825] sm:scale-105'
                 : 'bg-white text-slate-700 border-[3px] border-slate-300 hover:bg-slate-50 shadow-[2px_2px_0px_#CBD5E1]'
             }`}
           >
-            <Trophy className="w-5 h-5 text-[#FF9800]" />
+            <Trophy className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF9800]" />
             2. Pilih Misi / Level
           </button>
         </div>
