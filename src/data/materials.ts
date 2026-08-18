@@ -232,18 +232,48 @@ export const materialsData: PillarMaterial[] = [
   },
 
   // ============================================
-  // PILAR 3: KETAHANAN PANGAN
+  // PILAR 3: KETAHANAN PANGAN & GIZI
   // ============================================
   {
     pillarId: 3,
-    title: 'Ketahanan Pangan Desa',
-    subtitle: 'Menanam, memelihara, dan menjaga ketersediaan pangan desa!',
+    title: 'Ketahanan Pangan & Gizi Desa',
+    subtitle: 'Menanam, memelihara, menjaga gizi, dan ketersediaan pangan desa!',
     icon: '🌾',
     mascot: 'Gizi',
     themeColor: '#FF9800',
     themeDark: '#E65100',
     themeBg: '#FFF3E0',
     sections: [
+      {
+        title: 'Gizi Seimbang & Prinsip Isi Piringku',
+        icon: '🥗',
+        points: [
+          '**Gizi Seimbang** adalah susunan makanan sehari-hari yang mengandung zat gizi dalam jenis dan jumlah yang sesuai kebutuhan tubuh kita.',
+          '🥗 **1/2 bagian piring: Sayuran & Buah-buahan** — sayuran sebaiknya lebih banyak daripada buah. Kaya akan vitamin, mineral, dan serat untuk kesehatan.',
+          '🍚 **1/2 bagian piring: Makanan Pokok & Lauk-pauk** — makanan pokok sebaiknya lebih banyak daripada lauk. Sebagai sumber energi dan zat pembangun tubuh.',
+          'Makan beragam makanan memastikan semua zat gizi terpenuhi, karena tidak ada satu makanan pun yang mengandung zat gizi lengkap! 🏆',
+        ],
+      },
+      {
+        title: 'Pentingnya Sarapan & Jajanan Sehat',
+        icon: '🍳',
+        points: [
+          '🍳 **Sarapan pagi** membekali tubuh dan otak dengan energi sebelum belajar di kelas. Sarapan bikin konsentrasi, cerdas, dan tidak mudah lemas!',
+          '🥪 **Pilih jajanan sehat** yang bersih, tertutup rapat, dan tidak berbau aneh di sekolah. Hindari jajanan terbuka yang dihinggapi lalat.',
+          '⚠️ Batasi jajanan yang mengandung terlalu banyak gula, garam, dan lemak (seperti gorengan berlebih atau minuman manis berwarna-warni).',
+          '🥤 Biasakan selalu memilih **air putih** sebagai minuman utama saat haus demi menjaga ginjal tetap sehat.',
+        ],
+      },
+      {
+        title: 'Program Makan Bergizi Gratis (MBG) di Sekolah',
+        icon: '🍱',
+        points: [
+          '**Program Makan Bergizi Gratis (MBG)** membantu anak sekolah mendapatkan asupan gizi yang lengkap, higienis, dan seimbang secara gratis!',
+          'Sikap tertib siswa sangat penting: **cuci tangan sebelum makan, berdoa dengan tenang, duduk rapi, dan tidak membuang-buang makanan.**',
+          'Menghargai makanan gratis ini dengan memakannya sampai habis adalah tanda kepedulian terhadap lingkungan dan jerih payah para petani. 💚',
+          'Terapkan gerakan sederhana di sekolah: **AMBIL secukupnya, MAKAN dengan tertib, HABISKAN tanpa sisa, dan BERSIHKAN tempat makanmu!**',
+        ],
+      },
       {
         title: 'Sumber Karbohidrat Lokal yang Bergizi',
         icon: '🍠',
@@ -334,12 +364,17 @@ export const materialsData: PillarMaterial[] = [
       },
     ],
     funFacts: [
+      { icon: '🍳', text: 'Sarapan pagi terbukti meningkatkan kemampuan matematika dan membaca anak sekolah hingga 20%! Jangan lewatkan sarapan ya!' },
+      { icon: '🍱', text: 'Dengan menghabiskan makanan gratis di sekolah, kita membantu mencegah penumpukan sampah sisa makanan yang merusak bumi!' },
       { icon: '🐟', text: 'Ikan lele bisa dipanen hanya dalam 2-3 bulan! Sangat cepat untuk memenuhi kebutuhan protein keluarga.' },
       { icon: '🥬', text: 'Kangkung adalah sayuran tercepat tumbuh — hanya 3-4 minggu dari tanam sampai panen! Kamu bisa panen sendiri di rumah.' },
       { icon: '🥚', text: 'Satu ekor ayam kampung bisa menghasilkan 150-200 butir telur per tahun. Bayangkan kalau punya 5 ekor!' },
       { icon: '🌽', text: 'Indonesia memiliki lebih dari 77 jenis sumber karbohidrat lokal selain beras. Ayo coba semua!' },
     ],
     keyTerms: [
+      { term: 'Gizi Seimbang', definition: 'Susunan makanan sehari-hari yang mengandung zat gizi dalam jenis dan jumlah yang sesuai kebutuhan tubuh' },
+      { term: 'Isi Piringku', definition: 'Panduan porsi makan sehat: 1/2 sayur & buah, 1/2 karbohidrat & lauk' },
+      { term: 'Makan Bergizi Gratis', definition: 'Program penyediaan makanan sehat secara gratis untuk mendukung gizi siswa' },
       { term: 'Ketahanan Pangan', definition: 'Kemampuan desa untuk menyediakan makanan yang cukup dan bergizi bagi seluruh warga' },
       { term: 'Kebun Gizi', definition: 'Pekarangan rumah yang dimanfaatkan untuk menanam sayuran dan buah' },
       { term: 'Budikdamber', definition: 'Budidaya Ikan dalam Ember — sistem gabungan ternak ikan dan tanam sayur' },

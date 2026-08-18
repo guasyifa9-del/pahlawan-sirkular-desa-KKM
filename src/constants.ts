@@ -84,6 +84,6 @@ export const VICTORY_TITLES = [
  * Mapping question ID → tipe karakter edukasi.
  * Menentukan ilustrasi karakter mana yang tampil saat pesan edukasi dibuka.
  */
-export const VEGGIE_QUESTION_IDS = [1, 2, 7, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
+export const VEGGIE_QUESTION_IDS = [1, 2, 7, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35];
 export const TRASH_BIN_QUESTION_IDS = [3, 4, 8];
 export const RECYCLING_QUESTION_IDS = [5, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];

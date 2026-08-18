@@ -244,7 +244,7 @@ export const SetupScreen = ({
                         {level.theme_name}
                       </h3>
                       <p className="text-xs text-slate-700 font-bold">
-                        10 Soal Interaktif • Maskot: {level.mascot}
+                        {level.questions.length} Soal Interaktif • Maskot: {level.mascot}
                       </p>
                     </div>
 

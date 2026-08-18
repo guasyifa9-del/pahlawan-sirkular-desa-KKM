@@ -350,7 +350,7 @@
         },
         {
           "id": 28,
-          "question": "Bagaimana cara sederhana menyembunyikan 'tabungan pangan' agar desa kita tidak kehabisan tanaman saat musim kemarau?",
+          "question": "Bagaimana cara sederhana menyiapkan 'tabungan pangan' agar desa kita tidak kehabisan tanaman saat musim kemarau?",
           "options": [
             "A. Menyimpan dan mengeringkan biji-biji sayuran tua untuk ditanam kembali",
             "B. Membeli makanan instan sebanyak-banyaknya",
@@ -383,6 +383,66 @@
           "correct_answer": "A",
           "correct_index": 0,
           "education_message": "Hewan ternak kecil di pekarangan menyumbang kebutuhan protein harian keluarga dengan sangat mudah dan murah."
+        },
+        {
+          "id": 31,
+          "question": "Apa arti dari Gizi Seimbang yang harus kita konsumsi setiap hari?",
+          "options": [
+            "A. Hanya makan satu jenis buah yang mahal terus-menerus",
+            "B. Susunan makanan sehari-hari yang mengandung zat gizi dalam jenis dan jumlah yang sesuai kebutuhan tubuh",
+            "C. Makan makanan porsi raksasa sampai kekenyangan"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "education_message": "Tubuh membutuhkan zat gizi beragam (karbohidrat, protein, vitamin, mineral) dalam jumlah seimbang agar tumbuh sehat dan kuat."
+        },
+        {
+          "id": 32,
+          "question": "Berdasarkan panduan 'Isi Piringku', piring makan sekali makan kita sebaiknya dibagi menjadi apa?",
+          "options": [
+            "A. Semua bagian piring diisi nasi putih saja",
+            "B. 1/2 piring berisi sayur dan buah, 1/2 piring berisi makanan pokok dan lauk-pauk",
+            "C. Penuh dengan jajanan manis dan es krim"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "education_message": "Pembagian ini memastikan tubuh mendapatkan asupan vitamin dari sayur/buah serta tenaga dan protein dari karbohidrat/lauk secara pas."
+        },
+        {
+          "id": 33,
+          "question": "Mengapa kita sangat diwajibkan sarapan pagi sebelum berangkat ke sekolah?",
+          "options": [
+            "A. Agar bisa terlambat masuk sekolah",
+            "B. Untuk memberikan pasokan energi agar otak fokus konsentrasi belajar dan tidak lemas",
+            "C. Biar tidak perlu belajar di kelas"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "education_message": "Sarapan adalah modal bahan bakar bagi tubuh dan otak untuk memulai aktivitas belajar sepanjang hari dengan semangat."
+        },
+        {
+          "id": 34,
+          "question": "Bagaimana sikap makan yang baik dan tertib dalam mendukung kesuksesan Program Makan Bergizi Gratis di sekolah?",
+          "options": [
+            "A. Berlari-lari di kelas sambil melempar makanan",
+            "B. Mencuci tangan sebelum makan, berdoa, makan dengan duduk tertib, dan menghabiskan piring makan tanpa sisa",
+            "C. Menyisakan banyak makanan dan membuangnya ke lantai"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "education_message": "Tertib saat makan bergizi gratis menunjukkan sikap disiplin, menjaga kesehatan diri, dan menghargai bantuan makanan sehat yang diberikan."
+        },
+        {
+          "id": 35,
+          "question": "Bagaimana cara memilih jajanan yang aman dan sehat di lingkungan sekolah?",
+          "options": [
+            "A. Memilih jajanan yang bersih, tertutup rapat, berbau segar, dan membatasi pemanis/pewarna buatan berlebih",
+            "B. Membeli makanan yang dihinggapi banyak lalat di pinggir jalan",
+            "C. Memilih makanan kedaluwarsa karena harganya murah"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "education_message": "Jajanan bersih dan rendah gula/garam/lemak melindungi perut kita dari diare serta menjaga tubuh tetap fit dan tidak mudah obesitas."
         }
       ]
     }
