@@ -2,6 +2,7 @@
 **Aplikasi Kuis Interaktif: Pahlawan Sirkular Desa (Team Battle Edition)**
 
 Panduan ini disusun khusus untuk Mahasiswa KKM dalam mempresentasikan, mendemonstrasikan, dan menyerahkan Aplikasi Kuis Edukasi kepada Bapak/Ibu Guru, Kepala Sekolah, serta Perangkat Desa.
+*Lihat naskah bicara lengkap dan panduan pengisian Google Sheets di [NASKAH_PRESENTASI_DAN_PANDUAN_SHEETS.md](file:///c:/laragon/www/Apk%20KKM/NASKAH_PRESENTASI_DAN_PANDUAN_SHEETS.md)*
 
 ---
 
