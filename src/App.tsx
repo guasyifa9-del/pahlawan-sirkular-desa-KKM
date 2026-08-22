@@ -93,7 +93,10 @@ export default function App() {
 
     setSelectedLevelId(levelId);
 
-    const questionsToPlay = getQuestionsForLevel(activeQuizData.levels, levelId);
+    const questionsToPlay = getQuestionsForLevel(activeQuizData.levels, levelId, {
+      shuffle: settings.shuffleQuestions,
+      limit: settings.questionLimit,
+    });
     setActiveQuestions(questionsToPlay);
     setCurrentQuestionIndex(0);
     setPhase('gameplay');
@@ -110,7 +113,10 @@ export default function App() {
     setTeams(saved.teams);
     setSelectedLevelId(saved.levelId);
 
-    const questionsToPlay = getQuestionsForLevel(activeQuizData.levels, saved.levelId);
+    const questionsToPlay = getQuestionsForLevel(activeQuizData.levels, saved.levelId, {
+      shuffle: settings.shuffleQuestions,
+      limit: settings.questionLimit,
+    });
     const maxIndex = Math.max(0, questionsToPlay.length - 1);
     const safeIndex = Math.min(Math.max(0, saved.questionIndex || 0), maxIndex);
 
@@ -213,6 +219,11 @@ export default function App() {
             savedStateExists={savedStateExists}
             onResumeSavedGame={handleResumeSavedGame}
             onOpenMaterial={() => setPhase('material')}
+            settings={settings}
+            onUpdateSettings={(newSettings) => {
+              setSettings(newSettings);
+              saveSettings(newSettings);
+            }}
           />
         )}
 

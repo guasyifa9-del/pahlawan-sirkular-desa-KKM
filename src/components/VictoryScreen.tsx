@@ -232,10 +232,10 @@ export const VictoryScreen = ({
         <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
           <button
             onClick={exportCSV}
-            className="px-5 py-2.5 bg-white hover:bg-slate-50 text-slate-800 font-black text-xs rounded-xl border-2 border-slate-300 shadow-[2px_2px_0px_#94A3B8] flex items-center gap-2 cursor-pointer"
+            className="px-5 py-3 bg-[#4CAF50] hover:bg-emerald-600 text-white font-black text-xs sm:text-sm rounded-2xl border-[3px] border-[#2E7D32] shadow-[4px_4px_0px_#2E7D32] flex items-center gap-2 cursor-pointer transition-transform hover:scale-105"
           >
-            <Download className="w-4 h-4 text-[#4CAF50]" />
-            Unduh Hasil (CSV)
+            <Download className="w-4 h-4 text-white" />
+            📥 UNDUH REKAP NILAI (.CSV)
           </button>
 
           {webhookUrl && (

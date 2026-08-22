@@ -14,6 +14,8 @@ export const defaultSettings: GameSettings = {
   googleSheetsWebhookUrl: '',
   googleSheetsQuestionsUrl: '',
   autoPlayBGM: true,
+  questionLimit: 0,
+  shuffleQuestions: true,
 };
 
 export const defaultTeams: Team[] = [

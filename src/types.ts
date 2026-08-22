@@ -49,4 +49,6 @@ export interface GameSettings {
   googleSheetsWebhookUrl: string;
   googleSheetsQuestionsUrl: string;
   autoPlayBGM: boolean;
+  questionLimit: number; // 0 = semua, 3, 5, 10
+  shuffleQuestions: boolean; // default true
 }

@@ -127,6 +127,30 @@
           "correct_answer": "C",
           "correct_index": 2,
           "education_message": "Ini adalah 3 jurus rahasia untuk menjadi pahlawan lingkungan penakluk sampah!"
+        },
+        {
+          "id": 36,
+          "question": "Mengapa kita tidak boleh membakar sampah plastik di pekarangan rumah?",
+          "options": [
+            "A. Karena asapnya harum",
+            "B. Karena menghasilkan asap beracun yang membahayakan paru-paru dan udara",
+            "C. Karena plastik akan berubah jadi emas"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "education_message": "Membakar plastik melepaskan zat beracun dioksin yang memicu penyakit pernapasan. Lebih baik dipilah dan didaur ulang!"
+        },
+        {
+          "id": 37,
+          "question": "Membuat tempat pensil dari botol plastik bekas atau ecobrick adalah contoh penerapan prinsip...",
+          "options": [
+            "A. Reuse & Recycle (Memakai Ulang & Daur Ulang Kreatif)",
+            "B. Rejection (Penolakan)",
+            "C. Rest (Istirahat)"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "education_message": "Mengubah barang bekas menjadi benda berguna menghemat sumber daya dan mengurangi penumpukan sampah di desa."
         }
       ]
     },
@@ -255,6 +279,30 @@
           "correct_answer": "A",
           "correct_index": 0,
           "education_message": "Memakai produk ramah lingkungan adalah tanda anak pintar yang peduli pada masa depan bumi."
+        },
+        {
+          "id": 38,
+          "question": "Apa keuntungan promosi produk kerajinan UMKM desa menggunakan media sosial?",
+          "options": [
+            "A. Produk bisa dikenal calon pembeli lebih luas hingga luar daerah secara gratis",
+            "B. Pembeli lokal jadi kabur",
+            "C. Produk langsung habis otomatis"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "education_message": "Pemasaran digital membantu UMKM desa menjangkau pasar nasional dengan mudah dan hemat biaya."
+        },
+        {
+          "id": 39,
+          "question": "Mengapa kerajinan besek bambu khas desa sangat bagus dipakai sebagai wadah makanan?",
+          "options": [
+            "A. Karena terbuat dari bahan alami yang mudah terurai dan ramah lingkungan",
+            "B. Karena harganya jutaan rupiah",
+            "C. Karena tidak bisa dicuci"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "education_message": "Wadah alami dari bambu mengurangi ketergantungan pada bungkus plastik sekali pakai dan mendukung pengrajin lokal."
         }
       ]
     },
@@ -443,6 +491,18 @@
           "correct_answer": "A",
           "correct_index": 0,
           "education_message": "Jajanan bersih dan rendah gula/garam/lemak melindungi perut kita dari diare serta menjaga tubuh tetap fit dan tidak mudah obesitas."
+        },
+        {
+          "id": 40,
+          "question": "Mengapa minum air putih setidaknya 8 gelas sehari sangat penting bagi siswa saat belajar di sekolah?",
+          "options": [
+            "A. Mencegah dehidrasi, menjaga konsentrasi belajar, dan tubuh tetap segar bugar",
+            "B. Agar bisa sering keluar kelas",
+            "C. Supaya mengantuk saat pelajaran"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "education_message": "Air putih membantu fungsi otak bekerja optimal saat berpikir dan menjaga kebugaran tubuh sepanjang jam pelajaran."
         }
       ]
     }

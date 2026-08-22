@@ -50,10 +50,46 @@ export const SettingsModal = ({
         </div>
 
         <div className="space-y-4 text-xs sm:text-sm">
-          {/* Timer Duration */}
+          {/* Question Count Limit */}
           <div>
             <label className="block text-slate-800 font-extrabold mb-1.5 flex items-center gap-2">
               <Timer className="w-4 h-4 text-[#FF9800]" />
+              Jumlah Soal per Game (Mode Sosialisasi):
+            </label>
+            <select
+              value={form.questionLimit}
+              onChange={(e) => setForm({ ...form, questionLimit: Number(e.target.value) })}
+              className="w-full bg-[#F0F9FF] border-[3px] border-[#FF9800] rounded-xl px-3 py-2 text-slate-900 font-black outline-none focus:border-[#E65100]"
+            >
+              <option value={3}>🚀 3 Soal (Demo Sosialisasi ~3 Menit - Rekomendasi)</option>
+              <option value={5}>⚡ 5 Soal (Sesi Singkat ~5 Menit)</option>
+              <option value={10}>🎯 10 Soal (Sesi Standar Kelas)</option>
+              <option value={0}>🏆 Semua Soal (Lengkap Tanpa Batas)</option>
+            </select>
+          </div>
+
+          {/* Shuffle Questions Toggle */}
+          <div className="flex items-center justify-between bg-[#F0F9FF] p-3 rounded-xl border-2 border-slate-200">
+            <div>
+              <label className="text-slate-800 font-extrabold block text-xs sm:text-sm">
+                🔀 Acak Soal Setiap Game:
+              </label>
+              <p className="text-[10px] text-slate-500 font-bold">
+                Mengacak urutan soal secara otomatis agar game tidak membosankan.
+              </p>
+            </div>
+            <input
+              type="checkbox"
+              checked={form.shuffleQuestions}
+              onChange={(e) => setForm({ ...form, shuffleQuestions: e.target.checked })}
+              className="w-5 h-5 accent-[#4CAF50] cursor-pointer"
+            />
+          </div>
+
+          {/* Timer Duration */}
+          <div>
+            <label className="block text-slate-800 font-extrabold mb-1.5 flex items-center gap-2">
+              <Timer className="w-4 h-4 text-[#2196F3]" />
               Durasi Timer per Soal (Detik):
             </label>
             <select

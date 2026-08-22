@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { Team, Level } from '../types';
+import { Team, Level, GameSettings } from '../types';
 import { defaultTeams } from '../utils/storage';
 import { MIN_TEAMS, MAX_TEAMS } from '../constants';
 import { AVATAR_OPTIONS } from './TeamAvatars';
 import { Mascot } from './Mascots';
-import { Plus, Trash2, Play, Users, Trophy, Sparkles, BookOpen, Layers } from 'lucide-react';
+import { Plus, Trash2, Play, Users, Trophy, Sparkles, BookOpen, Layers, Zap, Shuffle } from 'lucide-react';
 
 interface SetupScreenProps {
   levels: Level[];
@@ -13,6 +13,8 @@ interface SetupScreenProps {
   savedStateExists: boolean;
   onResumeSavedGame: () => void;
   onOpenMaterial: () => void;
+  settings: GameSettings;
+  onUpdateSettings: (newSettings: GameSettings) => void;
 }
 
 export const SetupScreen = ({
@@ -21,6 +23,8 @@ export const SetupScreen = ({
   savedStateExists,
   onResumeSavedGame,
   onOpenMaterial,
+  settings,
+  onUpdateSettings,
 }: SetupScreenProps) => {
   const [teams, setTeams] = useState<Team[]>(defaultTeams);
 
@@ -211,6 +215,53 @@ export const SetupScreen = ({
         {/* Tab Content 2: Mission Select */}
         {activeTab === 'mission' && (
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
+            {/* Quick Mode & Question Count Selector for Socialization */}
+            <div className="bg-[#F0F9FF] border-[3px] border-[#2196F3] rounded-2xl p-4 shadow-[4px_4px_0px_#1976D2] flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-3 text-left">
+                <div className="p-2.5 bg-[#FFEB3B] text-[#1B5E20] rounded-xl border-2 border-[#FBC02D] shadow-sm">
+                  <Zap className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-black text-sm text-slate-900">Mode Durasi Sosialisasi:</h4>
+                  <p className="text-xs font-bold text-slate-600">Pilih jumlah soal per sesi agar peserta tidak bosan.</p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2 w-full md:w-auto">
+                {[
+                  { limit: 3, label: '🚀 3 Soal (Demo ~3m)' },
+                  { limit: 5, label: '⚡ 5 Soal (Singkat)' },
+                  { limit: 10, label: '🎯 10 Soal (Standar)' },
+                  { limit: 0, label: '🏆 Semua Soal' },
+                ].map((opt) => (
+                  <button
+                    key={opt.limit}
+                    onClick={() => onUpdateSettings({ ...settings, questionLimit: opt.limit })}
+                    className={`px-3 py-1.5 rounded-xl font-black text-xs cursor-pointer border-2 transition-transform hover:scale-105 ${
+                      settings.questionLimit === opt.limit
+                        ? 'bg-[#FF9800] text-white border-[#E65100] shadow-[2px_2px_0px_#E65100]'
+                        : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-50'
+                    }`}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+
+                <button
+                  onClick={() => onUpdateSettings({ ...settings, shuffleQuestions: !settings.shuffleQuestions })}
+                  className={`px-3 py-1.5 rounded-xl font-black text-xs cursor-pointer border-2 flex items-center gap-1 transition-transform hover:scale-105 ${
+                    settings.shuffleQuestions !== false
+                      ? 'bg-[#4CAF50] text-white border-[#2E7D32] shadow-[2px_2px_0px_#2E7D32]'
+                      : 'bg-slate-200 text-slate-600 border-slate-300'
+                  }`}
+                  title="Toggle Acak Soal"
+                >
+                  <Shuffle className="w-3.5 h-3.5" />
+                  {settings.shuffleQuestions !== false ? 'Acak ON' : 'Acak OFF'}
+                </button>
+              </div>
+            </div>
+
             <p className="text-xs md:text-sm font-bold text-slate-700 text-center">
               Pilih fokus materi kuis untuk sesi bertanding kelas hari ini:
             </p>

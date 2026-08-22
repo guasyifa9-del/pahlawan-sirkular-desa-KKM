@@ -11,6 +11,7 @@ import {
   Sparkles,
   Star,
   GraduationCap,
+  Printer,
 } from 'lucide-react';
 
 interface MaterialScreenProps {
@@ -124,13 +125,24 @@ export const MaterialScreen = ({ onBack }: MaterialScreenProps) => {
               </div>
             </div>
 
-            <button
-              onClick={onBack}
-              className="px-5 py-2.5 bg-white hover:bg-slate-50 text-slate-800 font-black text-xs md:text-sm rounded-2xl border-[3px] border-slate-300 shadow-[3px_3px_0px_#CBD5E1] flex items-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Kembali ke Menu
-            </button>
+            <div className="flex items-center gap-2 print:hidden">
+              <button
+                onClick={() => window.print()}
+                className="px-4 py-2.5 bg-[#FFEB3B] hover:bg-[#FBC02D] text-[#1B5E20] font-black text-xs md:text-sm rounded-2xl border-[3px] border-[#FBC02D] shadow-[3px_3px_0px_#F9A825] flex items-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
+                title="Cetak/Simpan Rangkuman Materi sebagai PDF"
+              >
+                <Printer className="w-4 h-4" />
+                🖨️ Cetak Materi
+              </button>
+
+              <button
+                onClick={onBack}
+                className="px-4 py-2.5 bg-white hover:bg-slate-50 text-slate-800 font-black text-xs md:text-sm rounded-2xl border-[3px] border-slate-300 shadow-[3px_3px_0px_#CBD5E1] flex items-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Kembali ke Menu
+              </button>
+            </div>
           </div>
         </motion.div>
 
