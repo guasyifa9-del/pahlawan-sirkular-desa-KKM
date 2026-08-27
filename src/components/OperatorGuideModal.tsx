@@ -72,6 +72,23 @@ export const OperatorGuideModal = ({ isOpen, onClose }: Props) => {
             </div>
           </div>
 
+          {/* Format Google Sheets Soal & Mapel */}
+          <div className="bg-[#F0F9FF] p-4 rounded-2xl border-[3px] border-[#9C27B0] shadow-[3px_3px_0px_#7B1FA2] flex items-start gap-3">
+            <Sparkles className="w-5 h-5 text-[#9C27B0] shrink-0 mt-0.5" />
+            <div>
+              <h3 className="font-black text-[#7B1FA2] text-sm">4. Format Pembuatan Soal Guru (Google Sheets 8 Kolom)</h3>
+              <p className="text-slate-800 font-bold mt-1">
+                Guru bisa memasukkan soal mata pelajaran (IPA, Matematika, PKn, B. Indo) untuk berbagai kelas dengan mengedit Google Sheets. Buat <span className="text-[#9C27B0] font-black">8 Kolom Wajib</span> di baris ke-1:
+              </p>
+              <div className="mt-2 bg-white p-2 rounded-xl border border-slate-300 font-mono text-[11px] text-slate-800 overflow-x-auto">
+                <span className="font-bold text-[#7B1FA2]">level_id | id | question | option_a | option_b | option_c | correct_answer | education_message</span>
+              </div>
+              <p className="text-slate-600 font-bold text-xs mt-1">
+                * Kunci jawaban wajib ditulis huruf kapital (<span className="text-emerald-700">A</span>, <span className="text-emerald-700">B</span>, atau <span className="text-emerald-700">C</span>). Pesan edukasi dibacakan otomatis oleh suara robot.
+              </p>
+            </div>
+          </div>
+
           {/* Keyboard Hotkeys Reference Table */}
           <div className="bg-white p-4 rounded-2xl border-[3px] border-[#FFEB3B] shadow-[4px_4px_0px_#FBC02D]">
             <h3 className="font-black text-[#1B5E20] text-sm mb-2 flex items-center gap-2 uppercase">

@@ -59,15 +59,43 @@ export async function fetchQuestionsFromCSV(url: string, baseQuizData: QuizData)
                 education_message: row.education_message || row.educationMessage || ''
               };
 
-              // Find the level and push the question
-              const level = updatedData.levels.find(l => l.level_id === levelId);
-              if (level) {
-                level.questions.push(question);
+              // Find or dynamically create the level
+              let level = updatedData.levels.find(l => l.level_id === levelId);
+
+              const rowThemeName = row.theme_name || row.themeName || row.theme || row.pelajaran || row.materi || row.mapel;
+              const rowMascot = row.mascot || row.maskot;
+
+              if (!level) {
+                const mascots: ('Kompi' | 'Kreati' | 'Gizi')[] = ['Kompi', 'Kreati', 'Gizi'];
+                const colors = ['#4CAF50', '#2196F3', '#FF9800', '#9C27B0', '#E91E63', '#00BCD4', '#3F51B5'];
+                
+                const validMascot = (rowMascot && ['Kompi', 'Kreati', 'Gizi'].includes(rowMascot))
+                  ? (rowMascot as 'Kompi' | 'Kreati' | 'Gizi')
+                  : mascots[(levelId - 1) % 3];
+
+                level = {
+                  level_id: levelId,
+                  theme_name: rowThemeName || `Misi Pelajaran ${levelId}`,
+                  mascot: validMascot,
+                  theme_color: colors[(levelId - 1) % colors.length],
+                  questions: []
+                };
+                updatedData.levels.push(level);
               } else {
-                // If level doesn't exist yet, we could theoretically create it, but we'll assume the base levels exist.
+                if (rowThemeName) {
+                  level.theme_name = rowThemeName;
+                }
+                if (rowMascot && ['Kompi', 'Kreati', 'Gizi'].includes(rowMascot)) {
+                  level.mascot = rowMascot as 'Kompi' | 'Kreati' | 'Gizi';
+                }
               }
+
+              level.questions.push(question);
             });
             
+            // Sort levels by level_id ascending
+            updatedData.levels.sort((a, b) => a.level_id - b.level_id);
+
             // Make sure we only keep levels that actually have questions now
             updatedData.levels = updatedData.levels.filter(l => l.questions.length > 0);
             
