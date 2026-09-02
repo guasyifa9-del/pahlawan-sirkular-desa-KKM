@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 import { MascotEmotion } from '../types';
 
 interface MascotProps {
-  name: 'Kompi' | 'Kreati' | 'Gizi';
+  name: string;
   emotion?: MascotEmotion;
   size?: 'sm' | 'md' | 'lg' | 'xl';
   speechBubble?: string;
@@ -69,6 +69,10 @@ export const Mascot = ({
     }
   };
 
+  const normalizedName = (name || '').toLowerCase();
+  const isGirl = normalizedName.includes('kreati') || normalizedName.includes('siti') || normalizedName.includes('putri') || normalizedName.includes('siswi');
+  const isBoy = normalizedName.includes('kompi') || normalizedName.includes('budi') || normalizedName.includes('siswa');
+
   return (
     <div className="relative inline-flex flex-col items-center select-none">
       {/* Speech Bubble */}
@@ -85,224 +89,174 @@ export const Mascot = ({
 
       {/* Mascot Container */}
       <motion.div className={`relative ${sizeClasses}`} {...getVariants()}>
-        {/* KOMPI: Green Friendly Trash Bin */}
-        {name === 'Kompi' && (
+        {/* SISWA / KOMPI: Cute SD Boy Student Character */}
+        {isBoy && (
           <svg viewBox="0 0 120 120" className="w-full h-full drop-shadow-lg overflow-visible">
             {/* Shadow */}
-            <ellipse cx="60" cy="112" rx="35" ry="6" fill="rgba(0,0,0,0.15)" />
+            <ellipse cx="60" cy="112" rx="30" ry="6" fill="rgba(0,0,0,0.15)" />
 
-            {/* Sweating effect when nervous */}
-            {emotion === 'nervous' && (
-              <g className="animate-pulse">
-                <path d="M 90 35 Q 94 40 90 45 Q 86 40 90 35 Z" fill="#60A5FA" />
-                <path d="M 28 40 Q 32 45 28 50 Q 24 45 28 40 Z" fill="#60A5FA" />
-              </g>
-            )}
+            {/* Body - Red/White SD Uniform Shirt */}
+            <path d="M 38 80 L 82 80 L 88 110 L 32 110 Z" fill="#E53935" stroke="#9A0007" strokeWidth="3" />
+            <path d="M 45 75 L 75 75 L 70 100 L 50 100 Z" fill="#FFFFFF" stroke="#CBD5E1" strokeWidth="2" />
+            {/* Red Tie */}
+            <polygon points="60,78 56,88 60,98 64,88" fill="#D32F2F" />
 
-            {/* Body Outer / Bin */}
-            <path
-              d="M 30 35 Q 30 25 40 25 L 80 25 Q 90 25 90 35 L 85 98 Q 85 105 75 105 L 45 105 Q 35 105 35 98 Z"
-              fill="#4CAF50"
-              stroke="#2E7D32"
-              strokeWidth="4"
-            />
+            {/* Head / Skin */}
+            <circle cx="60" cy="52" r="30" fill="#FFD1A4" stroke="#D89A6A" strokeWidth="3" />
 
-            {/* Lid */}
-            <path
-              d="M 22 24 C 22 18, 98 18, 98 24 L 95 32 C 95 35, 25 35, 25 32 Z"
-              fill="#66BB6A"
-              stroke="#2E7D32"
-              strokeWidth="3.5"
-            />
-            {/* Lid Handle */}
-            <rect x="50" y="12" width="20" height="8" rx="4" fill="#388E3C" stroke="#1B5E20" strokeWidth="2" />
-
-            {/* Recycling 3R Badge Emblem */}
-            {showBadge && (
-              <g transform="translate(60, 78) scale(0.7)">
-                <circle cx="0" cy="0" r="16" fill="#FFF" stroke="#2E7D32" strokeWidth="2" />
-                <path
-                  d="M -6 -4 L 0 -10 L 6 -4 L 3 -4 C 5 2 -3 8 -8 4"
-                  fill="none"
-                  stroke="#2E7D32"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M 6 4 L 0 10 L -6 4 L -3 4 C -5 -2 3 -8 8 -4"
-                  fill="none"
-                  stroke="#2E7D32"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                />
-              </g>
-            )}
+            {/* Hair (Black/Dark Brown Hair with Bangs) */}
+            <path d="M 32 45 C 32 25 88 25 88 45 C 80 32 40 32 32 45 Z" fill="#263238" />
+            
+            {/* SD School Cap (Topi SD Merah Putih) */}
+            <path d="M 32 40 C 32 20 88 20 88 40 Z" fill="#D32F2F" stroke="#9A0007" strokeWidth="2.5" />
+            <path d="M 32 40 L 88 40 L 88 43 L 32 43 Z" fill="#FFFFFF" />
+            <circle cx="60" cy="22" r="3.5" fill="#FFEB3B" />
+            {/* Cap Visor */}
+            <path d="M 36 40 Q 60 46 84 40 L 92 45 Q 60 52 28 45 Z" fill="#B71C1C" />
 
             {/* Eyes */}
-            <g className="eyes">
+            <g>
               {emotion === 'sad' ? (
                 <>
-                  <path d="M 42 48 Q 50 54 42 58" fill="none" stroke="#1B5E20" strokeWidth="3" strokeLinecap="round" />
-                  <path d="M 78 48 Q 70 54 78 58" fill="none" stroke="#1B5E20" strokeWidth="3" strokeLinecap="round" />
+                  <path d="M 46 54 Q 52 60 46 64" fill="none" stroke="#263238" strokeWidth="3" strokeLinecap="round" />
+                  <path d="M 74 54 Q 68 60 74 64" fill="none" stroke="#263238" strokeWidth="3" strokeLinecap="round" />
                 </>
               ) : emotion === 'nervous' ? (
                 <>
-                  <circle cx="46" cy="52" r="6" fill="#FFF" stroke="#1B5E20" strokeWidth="2" />
-                  <circle cx="46" cy="52" r="2" fill="#000" />
-                  <circle cx="74" cy="52" r="6" fill="#FFF" stroke="#1B5E20" strokeWidth="2" />
-                  <circle cx="74" cy="52" r="2" fill="#000" />
+                  <circle cx="48" cy="56" r="5" fill="#FFF" stroke="#263238" strokeWidth="2" />
+                  <circle cx="48" cy="56" r="2" fill="#000" />
+                  <circle cx="72" cy="56" r="5" fill="#FFF" stroke="#263238" strokeWidth="2" />
+                  <circle cx="72" cy="56" r="2" fill="#000" />
                 </>
               ) : (
                 <>
-                  <circle cx="46" cy="52" r="9" fill="#FFF" stroke="#1B5E20" strokeWidth="2" />
-                  <circle cx="48" cy="51" r="4.5" fill="#1B5E20" />
-                  <circle cx="50" cy="49" r="1.5" fill="#FFF" />
+                  <circle cx="48" cy="56" r="7.5" fill="#FFF" stroke="#263238" strokeWidth="2" />
+                  <circle cx="49" cy="55" r="4" fill="#263238" />
+                  <circle cx="51" cy="53" r="1.5" fill="#FFF" />
 
-                  <circle cx="74" cy="52" r="9" fill="#FFF" stroke="#1B5E20" strokeWidth="2" />
-                  <circle cx="72" cy="51" r="4.5" fill="#1B5E20" />
-                  <circle cx="74" cy="49" r="1.5" fill="#FFF" />
+                  <circle cx="72" cy="56" r="7.5" fill="#FFF" stroke="#263238" strokeWidth="2" />
+                  <circle cx="71" cy="55" r="4" fill="#263238" />
+                  <circle cx="73" cy="53" r="1.5" fill="#FFF" />
                 </>
               )}
             </g>
 
             {/* Mouth */}
             {emotion === 'happy' || emotion === 'celebrate' ? (
-              <path d="M 46 66 Q 60 80 74 66 Z" fill="#D32F2F" stroke="#1B5E20" strokeWidth="2" />
+              <path d="M 50 64 Q 60 76 70 64 Z" fill="#D32F2F" stroke="#9A0007" strokeWidth="1.5" />
             ) : emotion === 'sad' ? (
-              <path d="M 48 72 Q 60 62 72 72" fill="none" stroke="#1B5E20" strokeWidth="3" strokeLinecap="round" />
-            ) : emotion === 'nervous' ? (
-              <path d="M 48 70 Q 54 66 60 70 T 72 70" fill="none" stroke="#1B5E20" strokeWidth="2.5" strokeLinecap="round" />
+              <path d="M 50 68 Q 60 60 70 68" fill="none" stroke="#263238" strokeWidth="3" strokeLinecap="round" />
             ) : (
-              <path d="M 48 66 Q 60 76 72 66" fill="none" stroke="#1B5E20" strokeWidth="3.5" strokeLinecap="round" />
+              <path d="M 50 65 Q 60 73 70 65" fill="none" stroke="#263238" strokeWidth="3" strokeLinecap="round" />
             )}
 
-            {/* Cheeks */}
-            <circle cx="38" cy="62" r="4" fill="#81C784" opacity="0.6" />
-            <circle cx="82" cy="62" r="4" fill="#81C784" opacity="0.6" />
-
-            {/* Cute Hands */}
-            <path d="M 28 65 Q 16 60 22 75" fill="none" stroke="#388E3C" strokeWidth="4" strokeLinecap="round" />
-            <path d="M 92 65 Q 104 60 98 75" fill="none" stroke="#388E3C" strokeWidth="4" strokeLinecap="round" />
+            {/* Blushing Cheeks */}
+            <circle cx="41" cy="62" r="4" fill="#FF8A80" opacity="0.6" />
+            <circle cx="79" cy="62" r="4" fill="#FF8A80" opacity="0.6" />
           </svg>
         )}
 
-        {/* KREATI: Blue Crafty Drop / Recycling Mascot */}
-        {name === 'Kreati' && (
+        {/* SISWI / KREATI: Cute SD Girl Student Character */}
+        {isGirl && (
           <svg viewBox="0 0 120 120" className="w-full h-full drop-shadow-lg overflow-visible">
-            <ellipse cx="60" cy="112" rx="32" ry="6" fill="rgba(0,0,0,0.15)" />
+            {/* Shadow */}
+            <ellipse cx="60" cy="112" rx="30" ry="6" fill="rgba(0,0,0,0.15)" />
 
-            {/* Main Drop Body */}
-            <path
-              d="M 60 15 C 85 50 98 70 98 85 C 98 102 81 110 60 110 C 39 110 22 102 22 85 C 22 70 35 50 60 15 Z"
-              fill="#2196F3"
-              stroke="#0D47A1"
-              strokeWidth="4"
-            />
+            {/* Pigtails / Hair Extensions */}
+            <circle cx="26" cy="50" r="12" fill="#37474F" />
+            <circle cx="94" cy="50" r="12" fill="#37474F" />
+            {/* Hair Ribbons */}
+            <circle cx="31" cy="42" r="4" fill="#FF4081" />
+            <circle cx="89" cy="42" r="4" fill="#FF4081" />
 
-            {/* Fabric / Craft Patchwork Accent */}
-            <path
-              d="M 35 80 L 50 70 L 58 85 L 42 92 Z"
-              fill="#FFEB3B"
-              stroke="#0D47A1"
-              strokeWidth="2"
-              strokeDasharray="2 2"
-            />
+            {/* Body - Red SD Skirt & White Shirt */}
+            <path d="M 40 80 L 80 80 L 86 110 L 34 110 Z" fill="#E53935" stroke="#9A0007" strokeWidth="3" />
+            <path d="M 45 74 L 75 74 L 70 96 L 50 96 Z" fill="#FFFFFF" stroke="#CBD5E1" strokeWidth="2" />
+            <polygon points="60,76 57,85 60,92 63,85" fill="#D32F2F" />
+
+            {/* Head / Skin */}
+            <circle cx="60" cy="52" r="29" fill="#FFD1A4" stroke="#D89A6A" strokeWidth="3" />
+
+            {/* Girl Hair & Bangs */}
+            <path d="M 31 46 C 31 22 89 22 89 46 C 75 30 45 30 31 46 Z" fill="#37474F" />
+            {/* Cute Yellow Headband */}
+            <path d="M 33 42 C 33 24 87 24 87 42" fill="none" stroke="#FFEB3B" strokeWidth="4" />
 
             {/* Eyes */}
             <g>
               {emotion === 'sad' ? (
                 <>
-                  <path d="M 44 60 Q 50 66 44 70" fill="none" stroke="#0D47A1" strokeWidth="3" />
-                  <path d="M 76 60 Q 70 66 76 70" fill="none" stroke="#0D47A1" strokeWidth="3" />
+                  <path d="M 46 54 Q 52 60 46 64" fill="none" stroke="#263238" strokeWidth="3" strokeLinecap="round" />
+                  <path d="M 74 54 Q 68 60 74 64" fill="none" stroke="#263238" strokeWidth="3" strokeLinecap="round" />
                 </>
               ) : (
                 <>
-                  <circle cx="46" cy="60" r="8" fill="#FFF" stroke="#0D47A1" strokeWidth="2" />
-                  <circle cx="48" cy="59" r="4" fill="#0D47A1" />
-                  <circle cx="50" cy="57" r="1.5" fill="#FFF" />
+                  <circle cx="47" cy="56" r="7.5" fill="#FFF" stroke="#263238" strokeWidth="2" />
+                  <circle cx="48" cy="55" r="4" fill="#263238" />
+                  <circle cx="50" cy="53" r="1.5" fill="#FFF" />
 
-                  <circle cx="74" cy="60" r="8" fill="#FFF" stroke="#0D47A1" strokeWidth="2" />
-                  <circle cx="72" cy="59" r="4" fill="#0D47A1" />
-                  <circle cx="74" cy="57" r="1.5" fill="#FFF" />
+                  <circle cx="73" cy="56" r="7.5" fill="#FFF" stroke="#263238" strokeWidth="2" />
+                  <circle cx="72" cy="55" r="4" fill="#263238" />
+                  <circle cx="74" cy="53" r="1.5" fill="#FFF" />
                 </>
               )}
             </g>
 
             {/* Mouth */}
             {emotion === 'happy' || emotion === 'celebrate' ? (
-              <path d="M 48 72 Q 60 84 72 72 Z" fill="#E91E63" stroke="#0D47A1" strokeWidth="2" />
+              <path d="M 50 64 Q 60 76 70 64 Z" fill="#E91E63" stroke="#880E4F" strokeWidth="1.5" />
             ) : emotion === 'sad' ? (
-              <path d="M 48 76 Q 60 68 72 76" fill="none" stroke="#0D47A1" strokeWidth="3" strokeLinecap="round" />
+              <path d="M 50 68 Q 60 60 70 68" fill="none" stroke="#263238" strokeWidth="3" strokeLinecap="round" />
             ) : (
-              <path d="M 48 72 Q 60 80 72 72" fill="none" stroke="#0D47A1" strokeWidth="3" strokeLinecap="round" />
+              <path d="M 50 65 Q 60 73 70 65" fill="none" stroke="#263238" strokeWidth="3" strokeLinecap="round" />
             )}
 
-            {/* Cute Rosy Cheeks */}
-            <circle cx="36" cy="68" r="4" fill="#64B5F6" />
-            <circle cx="84" cy="68" r="4" fill="#64B5F6" />
-
-            {/* Paintbrush in Hand */}
-            <g transform="translate(86, 75) rotate(20)">
-              <rect x="0" y="0" width="6" height="24" fill="#795548" rx="2" />
-              <path d="M 0 0 C 0 -6 6 -6 6 0 Z" fill="#FF9800" />
-            </g>
+            {/* Blushing Cheeks */}
+            <circle cx="40" cy="62" r="4.5" fill="#FF8A80" opacity="0.7" />
+            <circle cx="80" cy="62" r="4.5" fill="#FF8A80" opacity="0.7" />
           </svg>
         )}
 
-        {/* GIZI: Orange Food & Nutrition Mascot */}
-        {name === 'Gizi' && (
+        {/* GIZI / JUARA: Cute SD Student Champion Character */}
+        {!isBoy && !isGirl && (
           <svg viewBox="0 0 120 120" className="w-full h-full drop-shadow-lg overflow-visible">
-            <ellipse cx="60" cy="112" rx="35" ry="6" fill="rgba(0,0,0,0.15)" />
+            {/* Shadow */}
+            <ellipse cx="60" cy="112" rx="30" ry="6" fill="rgba(0,0,0,0.15)" />
 
-            {/* Orange Citrus / Body */}
-            <circle cx="60" cy="65" r="42" fill="#FF9800" stroke="#E65100" strokeWidth="4" />
+            {/* Body */}
+            <path d="M 38 80 L 82 80 L 88 110 L 32 110 Z" fill="#FF9800" stroke="#E65100" strokeWidth="3" />
+            <path d="M 45 75 L 75 75 L 70 100 L 50 100 Z" fill="#FFFFFF" stroke="#CBD5E1" strokeWidth="2" />
+            <polygon points="60,78 56,88 60,98 64,88" fill="#E65100" />
+            {/* Champion Gold Medal */}
+            <circle cx="60" cy="95" r="7" fill="#FFD700" stroke="#B7950B" strokeWidth="2" />
+            <path d="M 60 91 L 62 94 L 65 94 L 63 96 L 64 99 L 60 97 L 56 99 L 57 96 L 55 94 L 58 94 Z" fill="#FFF" />
 
-            {/* Green Leaf Hair / Topper */}
-            <path
-              d="M 60 23 Q 45 5 35 18 Q 50 25 60 23 Z"
-              fill="#4CAF50"
-              stroke="#1B5E20"
-              strokeWidth="2.5"
-            />
-            <path
-              d="M 60 23 Q 75 5 85 18 Q 70 25 60 23 Z"
-              fill="#66BB6A"
-              stroke="#1B5E20"
-              strokeWidth="2.5"
-            />
+            {/* Head / Skin */}
+            <circle cx="60" cy="52" r="30" fill="#FFD1A4" stroke="#D89A6A" strokeWidth="3" />
+
+            {/* Hair */}
+            <path d="M 32 45 C 32 25 88 25 88 45 C 80 32 40 32 32 45 Z" fill="#3E2723" />
+            {/* Crown / Red Cap */}
+            <path d="M 32 40 C 32 20 88 20 88 40 Z" fill="#FF9800" stroke="#E65100" strokeWidth="2.5" />
+            <circle cx="60" cy="22" r="4" fill="#FFD700" />
 
             {/* Eyes */}
             <g>
-              {emotion === 'sad' ? (
-                <>
-                  <path d="M 44 58 Q 50 64 44 68" fill="none" stroke="#E65100" strokeWidth="3" />
-                  <path d="M 76 58 Q 70 64 76 68" fill="none" stroke="#E65100" strokeWidth="3" />
-                </>
-              ) : (
-                <>
-                  <circle cx="45" cy="58" r="8" fill="#FFF" stroke="#E65100" strokeWidth="2" />
-                  <circle cx="47" cy="57" r="4" fill="#3E2723" />
-                  <circle cx="49" cy="55" r="1.5" fill="#FFF" />
+              <circle cx="48" cy="56" r="7.5" fill="#FFF" stroke="#263238" strokeWidth="2" />
+              <circle cx="49" cy="55" r="4" fill="#3E2723" />
+              <circle cx="51" cy="53" r="1.5" fill="#FFF" />
 
-                  <circle cx="75" cy="58" r="8" fill="#FFF" stroke="#E65100" strokeWidth="2" />
-                  <circle cx="73" cy="57" r="4" fill="#3E2723" />
-                  <circle cx="75" cy="55" r="1.5" fill="#FFF" />
-                </>
-              )}
+              <circle cx="72" cy="56" r="7.5" fill="#FFF" stroke="#263238" strokeWidth="2" />
+              <circle cx="71" cy="55" r="4" fill="#3E2723" />
+              <circle cx="73" cy="53" r="1.5" fill="#FFF" />
             </g>
 
             {/* Mouth */}
-            {emotion === 'happy' || emotion === 'celebrate' ? (
-              <path d="M 46 70 Q 60 84 74 70 Z" fill="#D32F2F" stroke="#E65100" strokeWidth="2" />
-            ) : emotion === 'sad' ? (
-              <path d="M 48 76 Q 60 68 72 76" fill="none" stroke="#E65100" strokeWidth="3" strokeLinecap="round" />
-            ) : (
-              <path d="M 46 70 Q 60 82 74 70" fill="none" stroke="#E65100" strokeWidth="3.5" strokeLinecap="round" />
-            )}
+            <path d="M 50 64 Q 60 76 70 64 Z" fill="#D32F2F" stroke="#9A0007" strokeWidth="1.5" />
 
             {/* Cheeks */}
-            <circle cx="35" cy="66" r="5" fill="#FFB74D" opacity="0.8" />
-            <circle cx="85" cy="66" r="5" fill="#FFB74D" opacity="0.8" />
+            <circle cx="41" cy="62" r="4" fill="#FF8A80" opacity="0.6" />
+            <circle cx="79" cy="62" r="4" fill="#FF8A80" opacity="0.6" />
           </svg>
         )}
       </motion.div>

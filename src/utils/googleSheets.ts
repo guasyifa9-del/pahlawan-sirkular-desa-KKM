@@ -2,6 +2,23 @@ import Papa from 'papaparse';
 import { QuizData, Level, Question } from '../types';
 import { PillarMaterial } from '../data/materials';
 
+function sanitizeCSVText(csvText: string): string {
+  if (!csvText) return '';
+  let cleaned = csvText.trim();
+  const lines = cleaned.split(/\r?\n/);
+  const sanitizedLines = lines.map(line => {
+    let l = line.trim();
+    if (l.startsWith('"') && l.endsWith('"') && l.length > 2) {
+      const inner = l.slice(1, -1);
+      if (!inner.startsWith('"')) {
+        l = inner.replace(/""/g, '"');
+      }
+    }
+    return l;
+  });
+  return sanitizedLines.join('\n');
+}
+
 /**
  * Expected CSV Headers:
  * level_id, id, question, option_a, option_b, option_c, correct_answer, education_message
@@ -13,7 +30,8 @@ export async function fetchQuestionsFromCSV(url: string, baseQuizData: QuizData)
       throw new Error(`Failed to fetch CSV: ${response.statusText}`);
     }
     
-    const csvText = await response.text();
+    const rawText = await response.text();
+    const csvText = sanitizeCSVText(rawText);
     
     return new Promise((resolve, reject) => {
       Papa.parse(csvText, {
@@ -127,7 +145,8 @@ export async function fetchMaterialsFromCSV(url: string): Promise<PillarMaterial
       throw new Error(`Failed to fetch Materials CSV: ${response.statusText}`);
     }
     
-    const csvText = await response.text();
+    const rawText = await response.text();
+    const csvText = sanitizeCSVText(rawText);
     
     return new Promise((resolve, reject) => {
       Papa.parse(csvText, {
