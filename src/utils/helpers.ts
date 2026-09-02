@@ -5,9 +5,10 @@
  * Fungsi di sini bersifat murni (pure function) — tidak mengandung side effect.
  */
 
-import { Level, Question, Team, GamePhase } from '../types';
+import { Level, Question, Team, GamePhase, QuizData } from '../types';
 import { SavedGameState } from './storage';
 import { CharacterType } from '../components/EducationalCharacter';
+import { PillarMaterial } from '../data/materials';
 import {
   MARATHON_LEVEL_ID,
   VEGGIE_QUESTION_IDS,
