@@ -27,7 +27,7 @@ export const EducationMessageBox = ({
   isSpeaking,
   onToggleSpeech,
 }: EducationMessageBoxProps) => {
-  const characterType = getCharacterType(questionId);
+  const characterType = getCharacterType(questionId, mascotName);
   const characterName = getCharacterName(questionId, mascotName);
 
   return (

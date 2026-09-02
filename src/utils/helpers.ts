@@ -87,10 +87,11 @@ export function createGameStatePayload(
  * - Soal tentang daur ulang/kreativitas → 'recycling'
  * - Soal lainnya → 'student'
  */
-export function getCharacterType(questionId: number): CharacterType {
-  if (VEGGIE_QUESTION_IDS.includes(questionId)) return 'veggie';
-  if (TRASH_BIN_QUESTION_IDS.includes(questionId)) return 'trash_bin';
-  if (RECYCLING_QUESTION_IDS.includes(questionId)) return 'recycling';
+export function getCharacterType(_questionId: number, mascotName?: string): CharacterType {
+  const name = (mascotName || '').toLowerCase();
+  if (name.includes('siti') || name.includes('siswi') || name.includes('kreati')) {
+    return 'student_girl';
+  }
   return 'student';
 }
 
@@ -98,11 +99,15 @@ export function getCharacterType(questionId: number): CharacterType {
  * Menentukan nama karakter edukasi berdasarkan ID soal.
  * Nama ini ditampilkan sebagai label di bawah ilustrasi karakter.
  */
-export function getCharacterName(questionId: number, defaultMascot: string): string {
-  if (VEGGIE_QUESTION_IDS.includes(questionId)) return 'Sayuran Ceria 🥬';
-  if (TRASH_BIN_QUESTION_IDS.includes(questionId)) return 'Kompi Bak Sampah 🗑️';
-  if (RECYCLING_QUESTION_IDS.includes(questionId)) return 'Kreati Daur Ulang 🎨';
-  return `${defaultMascot} & Pahlawan SD 👦`;
+export function getCharacterName(_questionId: number, defaultMascot: string): string {
+  const mascot = (defaultMascot || '').toLowerCase();
+  if (mascot.includes('siti') || mascot.includes('siswi') || mascot.includes('kreati')) {
+    return 'Siti (Siswi SD) 👧';
+  }
+  if (mascot.includes('budi') || mascot.includes('siswa') || mascot.includes('kompi')) {
+    return 'Budi (Siswa SD) 👦';
+  }
+  return `${defaultMascot || 'Siswa SD'} 👦`;
 }
 
 export interface SubjectMeta {
