@@ -17,6 +17,8 @@ import {
 
 interface MaterialScreenProps {
   onBack: () => void;
+  initialPillarId?: number;
+  customMaterials?: PillarMaterial[] | null;
 }
 
 // Accordion card for each material section
@@ -96,12 +98,13 @@ const SectionCard: FC<{
   );
 };
 
-export const MaterialScreen = ({ onBack }: MaterialScreenProps) => {
-  const [activePillarId, setActivePillarId] = useState(1);
+export const MaterialScreen = ({ onBack, initialPillarId = 1, customMaterials }: MaterialScreenProps) => {
+  const activeMaterials = (customMaterials && customMaterials.length > 0) ? customMaterials : materialsData;
+  const [activePillarId, setActivePillarId] = useState(initialPillarId);
   const [searchQuery, setSearchQuery] = useState('');
 
   const activePillar: PillarMaterial =
-    materialsData.find((m) => m.pillarId === activePillarId) || materialsData[0];
+    activeMaterials.find((m) => m.pillarId === activePillarId) || activeMaterials[0];
 
   const filteredSections = activePillar.sections.filter(sec =>
     sec.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -176,9 +179,9 @@ export const MaterialScreen = ({ onBack }: MaterialScreenProps) => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 mb-6"
+          className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 mb-6 flex-wrap"
         >
-          {materialsData.map((pillar) => {
+          {activeMaterials.map((pillar) => {
             const isActive = activePillarId === pillar.pillarId;
             return (
               <button

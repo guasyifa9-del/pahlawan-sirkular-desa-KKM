@@ -12,7 +12,8 @@ import {
   saveGameState,
   clearSavedGameState,
 } from './utils/storage';
-import { fetchQuestionsFromCSV } from './utils/googleSheets';
+import { fetchQuestionsFromCSV, fetchMaterialsFromCSV } from './utils/googleSheets';
+import { PillarMaterial } from './data/materials';
 import { sound } from './utils/audio';
 import { Navbar } from './components/Navbar';
 import { LiveScoreboard } from './components/LiveScoreboard';
@@ -39,6 +40,7 @@ export default function App() {
   const [savedStateExists, setSavedStateExists] = useState<boolean>(false);
 
   const [customQuizData, setCustomQuizData] = useState<QuizData | null>(null);
+  const [customMaterialsData, setCustomMaterialsData] = useState<PillarMaterial[] | null>(null);
   const [isFetchingQuestions, setIsFetchingQuestions] = useState<boolean>(false);
 
   // Cek apakah ada sesi permainan tersimpan di localStorage saat pertama kali mount
@@ -68,6 +70,22 @@ export default function App() {
       setCustomQuizData(null);
     }
   }, [settings.googleSheetsQuestionsUrl]);
+
+  // Ambil materi dinamis dari Google Sheets jika URL diset
+  useEffect(() => {
+    if (settings.googleSheetsMaterialsUrl) {
+      fetchMaterialsFromCSV(settings.googleSheetsMaterialsUrl)
+        .then(data => {
+          setCustomMaterialsData(data);
+        })
+        .catch(err => {
+          console.error("Gagal memuat materi dari Google Sheets, menggunakan materi default.", err);
+          setCustomMaterialsData(null);
+        });
+    } else {
+      setCustomMaterialsData(null);
+    }
+  }, [settings.googleSheetsMaterialsUrl]);
 
   const activeQuizData = customQuizData || quizData;
 
@@ -228,7 +246,11 @@ export default function App() {
         )}
 
         {phase === 'material' && (
-          <MaterialScreen onBack={() => setPhase('setup')} />
+          <MaterialScreen
+            initialPillarId={selectedLevelId}
+            customMaterials={customMaterialsData}
+            onBack={() => setPhase('setup')}
+          />
         )}
 
         {phase === 'gameplay' && (
