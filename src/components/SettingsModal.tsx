@@ -28,28 +28,31 @@ export const SettingsModal = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-white border-[6px] border-[#4CAF50] rounded-[32px] max-w-lg w-full p-6 text-slate-900 shadow-[8px_8px_0px_#2E7D32] relative">
+    <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+      <div className="bg-white border-[6px] border-[#4CAF50] rounded-[32px] max-w-lg w-full p-5 sm:p-6 text-slate-900 shadow-[8px_8px_0px_#2E7D32] relative flex flex-col max-h-[85vh]">
+        {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 bg-slate-100 hover:bg-slate-200 rounded-full text-slate-700 border-2 border-slate-300 cursor-pointer"
+          className="absolute top-4 right-4 p-2 bg-slate-100 hover:bg-slate-200 rounded-full text-slate-700 border-2 border-slate-300 cursor-pointer z-10"
         >
           <X className="w-5 h-5" />
         </button>
 
-        <div className="flex items-center gap-3 border-b-4 border-emerald-100 pb-4 mb-5">
+        {/* Modal Header */}
+        <div className="flex items-center gap-3 border-b-4 border-emerald-100 pb-4 mb-4 shrink-0 pr-10">
           <div className="p-3 bg-[#FFEB3B] text-slate-900 rounded-2xl border-2 border-[#FBC02D] shadow-[2px_2px_0px_#F9A825]">
             <Settings className="w-6 h-6 text-[#1B5E20]" />
           </div>
           <div>
-            <h2 className="text-xl font-black text-[#1B5E20] uppercase">Pengaturan Game & Suara</h2>
-            <p className="text-xs text-slate-600 font-bold">
+            <h2 className="text-lg sm:text-xl font-black text-[#1B5E20] uppercase">Pengaturan Game & Suara</h2>
+            <p className="text-[11px] sm:text-xs text-slate-600 font-bold">
               Kustomisasi Timer, Musik BGM & Integrasi Sheets
             </p>
           </div>
         </div>
 
-        <div className="space-y-4 text-xs sm:text-sm">
+        {/* Scrollable Form Body */}
+        <div className="flex-1 overflow-y-auto space-y-4 text-xs sm:text-sm pr-2 scrollbar-thin">
           {/* Question Count Limit */}
           <div>
             <label className="block text-slate-800 font-extrabold mb-1.5 flex items-center gap-2">
@@ -184,7 +187,8 @@ export const SettingsModal = ({
           </div>
         </div>
 
-        <div className="mt-6 flex justify-end gap-3 pt-4 border-t-2 border-slate-200">
+        {/* Sticky Footer Actions */}
+        <div className="mt-4 flex justify-end gap-3 pt-3 border-t-2 border-slate-200 shrink-0">
           <button
             onClick={onClose}
             className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-black text-xs rounded-xl border-2 border-slate-300 cursor-pointer"
