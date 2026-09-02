@@ -203,7 +203,7 @@ export const MaterialScreen = ({ onBack, initialPillarId = 1, customMaterials }:
                 }
               >
                 <span className="text-lg">{pillar.icon}</span>
-                <span className="truncate">Pilar {pillar.pillarId}: {pillar.title.split(' ').slice(0, 2).join(' ')}</span>
+                <span className="truncate">Pelajaran #{pillar.pillarId}: {pillar.title}</span>
               </button>
             );
           })}
@@ -246,7 +246,7 @@ export const MaterialScreen = ({ onBack, initialPillarId = 1, customMaterials }:
                     className="px-3 py-1 rounded-full text-xs font-black text-white"
                     style={{ backgroundColor: activePillar.themeColor }}
                   >
-                    Pilar #{activePillar.pillarId}
+                    Pelajaran #{activePillar.pillarId}
                   </span>
                   <span className="text-2xl">{activePillar.icon}</span>
                 </div>
@@ -348,21 +348,21 @@ export const MaterialScreen = ({ onBack, initialPillarId = 1, customMaterials }:
               transition={{ delay: 0.5 }}
               className="flex flex-col items-center gap-4 pb-8"
             >
-              {/* Next Pillar or Back */}
+              {/* Next Subject or Back */}
               <div className="flex flex-col sm:flex-row items-center gap-3 w-full max-w-lg">
-                {activePillarId < 3 && (
+                {activePillarId < activeMaterials.length && (
                   <motion.button
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     onClick={() => setActivePillarId(activePillarId + 1)}
                     className="flex-1 w-full py-3.5 font-black text-sm rounded-2xl border-[3px] flex items-center justify-center gap-2 cursor-pointer text-white"
                     style={{
-                      backgroundColor: materialsData[activePillarId]?.themeColor || '#4CAF50',
-                      borderColor: materialsData[activePillarId]?.themeDark || '#1B5E20',
-                      boxShadow: `4px 4px 0px ${materialsData[activePillarId]?.themeDark || '#1B5E20'}`,
+                      backgroundColor: activeMaterials[activePillarId]?.themeColor || '#4CAF50',
+                      borderColor: activeMaterials[activePillarId]?.themeDark || '#1B5E20',
+                      boxShadow: `4px 4px 0px ${activeMaterials[activePillarId]?.themeDark || '#1B5E20'}`,
                     }}
                   >
-                    Lanjut ke Pilar {activePillarId + 1}: {materialsData[activePillarId]?.title.split(' ').slice(0, 2).join(' ')} →
+                    Lanjut ke Pelajaran {activePillarId + 1}: {activeMaterials[activePillarId]?.title.split(' ').slice(0, 2).join(' ')} →
                   </motion.button>
                 )}
 
@@ -378,7 +378,7 @@ export const MaterialScreen = ({ onBack, initialPillarId = 1, customMaterials }:
               </div>
 
               <p className="text-xs font-bold text-slate-500 text-center">
-                Pastikan kamu sudah membaca semua materi di ketiga pilar sebelum memulai kuis ya! 📖
+                Pastikan kamu sudah membaca rangkuman materi sebelum memulai kuis ya! 📖
               </p>
             </motion.div>
           </motion.div>
