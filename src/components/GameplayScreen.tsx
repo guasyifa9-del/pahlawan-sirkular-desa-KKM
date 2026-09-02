@@ -293,7 +293,12 @@ export const GameplayScreen = ({
           className="bg-white text-slate-900 border-[4px] sm:border-[5px] border-[#4CAF50] rounded-3xl p-4 sm:p-6 shadow-[6px_6px_0px_#2E7D32] relative flex flex-col items-center"
         >
           {/* Question Category & Illustration */}
-          <QuestionIllustration questionId={currentQuestion.id} levelId={level.level_id} />
+          <QuestionIllustration
+            questionId={currentQuestion.id}
+            levelId={level.level_id}
+            themeName={level.theme_name}
+            questionText={currentQuestion.question}
+          />
 
           {/* Question Text */}
           <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-[#1B5E20] leading-tight text-center tracking-tight my-2">
