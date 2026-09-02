@@ -12,6 +12,7 @@ import {
   Star,
   GraduationCap,
   Printer,
+  Search,
 } from 'lucide-react';
 
 interface MaterialScreenProps {
@@ -97,8 +98,20 @@ const SectionCard: FC<{
 
 export const MaterialScreen = ({ onBack }: MaterialScreenProps) => {
   const [activePillarId, setActivePillarId] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
+
   const activePillar: PillarMaterial =
     materialsData.find((m) => m.pillarId === activePillarId) || materialsData[0];
+
+  const filteredSections = activePillar.sections.filter(sec =>
+    sec.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    sec.points.some(p => p.toLowerCase().includes(searchQuery.toLowerCase()))
+  );
+
+  const filteredKeyTerms = activePillar.keyTerms.filter(kt =>
+    kt.term.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    kt.definition.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="min-h-screen bg-[#F0F9FF] text-slate-900 p-3 sm:p-6 md:p-8 flex flex-col items-center font-sans">
@@ -117,30 +130,42 @@ export const MaterialScreen = ({ onBack }: MaterialScreenProps) => {
               <div>
                 <h1 className="text-xl md:text-2xl font-black text-[#1B5E20] uppercase tracking-tight flex items-center gap-2">
                   <GraduationCap className="w-6 h-6" />
-                  Materi Edukasi
+                  Materi Edukasi Sekolah
                 </h1>
                 <p className="text-xs md:text-sm font-bold text-slate-600">
-                  Baca dan pahami materi sebelum mengerjakan kuis! 📖
+                  Rangkuman materi pembelajaran & istilah penting sebelum kuis 📖
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center gap-2 print:hidden">
+            <div className="flex flex-wrap items-center gap-2 print:hidden w-full sm:w-auto justify-end">
+              {/* Search input */}
+              <div className="relative flex-1 sm:w-48">
+                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  placeholder="Cari materi..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-9 pr-3 py-2 bg-[#F0F9FF] border-2 border-slate-300 rounded-xl text-xs font-bold text-slate-900 focus:border-[#4CAF50] outline-none"
+                />
+              </div>
+
               <button
                 onClick={() => window.print()}
-                className="px-4 py-2.5 bg-[#FFEB3B] hover:bg-[#FBC02D] text-[#1B5E20] font-black text-xs md:text-sm rounded-2xl border-[3px] border-[#FBC02D] shadow-[3px_3px_0px_#F9A825] flex items-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
+                className="px-3.5 py-2 bg-[#FFEB3B] hover:bg-[#FBC02D] text-[#1B5E20] font-black text-xs rounded-xl border-[3px] border-[#FBC02D] shadow-[2px_2px_0px_#F9A825] flex items-center gap-1.5 cursor-pointer transition-transform hover:-translate-y-0.5"
                 title="Cetak/Simpan Rangkuman Materi sebagai PDF"
               >
                 <Printer className="w-4 h-4" />
-                🖨️ Cetak Materi
+                🖨️ Cetak
               </button>
 
               <button
                 onClick={onBack}
-                className="px-4 py-2.5 bg-white hover:bg-slate-50 text-slate-800 font-black text-xs md:text-sm rounded-2xl border-[3px] border-slate-300 shadow-[3px_3px_0px_#CBD5E1] flex items-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
+                className="px-3.5 py-2 bg-white hover:bg-slate-50 text-slate-800 font-black text-xs rounded-xl border-[3px] border-slate-300 shadow-[2px_2px_0px_#CBD5E1] flex items-center gap-1.5 cursor-pointer transition-transform hover:-translate-y-0.5"
               >
                 <ArrowLeft className="w-4 h-4" />
-                Kembali ke Menu
+                Kembali
               </button>
             </div>
           </div>
@@ -240,7 +265,7 @@ export const MaterialScreen = ({ onBack }: MaterialScreenProps) => {
                 <h3 className="text-sm font-black text-slate-900">Istilah Penting yang Harus Kamu Tahu:</h3>
               </div>
               <div className="flex flex-wrap gap-2">
-                {activePillar.keyTerms.map((kt, i) => (
+                {filteredKeyTerms.map((kt, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -271,7 +296,7 @@ export const MaterialScreen = ({ onBack }: MaterialScreenProps) => {
 
             {/* Material Sections (Accordion) */}
             <div className="space-y-4 mb-6">
-              {activePillar.sections.map((section, i) => (
+              {filteredSections.map((section, i) => (
                 <SectionCard
                   key={`${activePillar.pillarId}-${section.title}`}
                   section={section}

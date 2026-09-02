@@ -103,3 +103,45 @@ export function getCharacterName(questionId: number, defaultMascot: string): str
   if (RECYCLING_QUESTION_IDS.includes(questionId)) return 'Kreati Daur Ulang 🎨';
   return `${defaultMascot} & Pahlawan SD 👦`;
 }
+
+export interface SubjectMeta {
+  icon: string;
+  badge: string;
+  color: string;
+  darkColor: string;
+  bgColor: string;
+}
+
+/**
+ * Mendeteksi ikon, badge, dan warna tema berdasarkan nama mata pelajaran/misi.
+ */
+export function getSubjectMeta(themeName: string, levelId: number): SubjectMeta {
+  const name = (themeName || '').toLowerCase();
+  if (name.includes('ipa') || name.includes('ipas') || name.includes('sains') || name.includes('wujud') || name.includes('alam')) {
+    return { icon: '🧪', badge: 'IPAS / SAINS', color: '#4CAF50', darkColor: '#1B5E20', bgColor: '#E8F5E9' };
+  }
+  if (name.includes('matematika') || name.includes('mtk') || name.includes('hitung') || name.includes('bangun')) {
+    return { icon: '📐', badge: 'MATEMATIKA', color: '#2196F3', darkColor: '#0D47A1', bgColor: '#E3F2FD' };
+  }
+  if (name.includes('indonesia') || name.includes('bahasa') || name.includes('b.indo') || name.includes('kata')) {
+    return { icon: '📚', badge: 'B. INDONESIA', color: '#FF9800', darkColor: '#E65100', bgColor: '#FFF3E0' };
+  }
+  if (name.includes('pkn') || name.includes('pancasila') || name.includes('kewarganegaraan') || name.includes('ppkn')) {
+    return { icon: '🇮🇩', badge: 'PKN / PANCASILA', color: '#E91E63', darkColor: '#880E4F', bgColor: '#FCE4EC' };
+  }
+  if (name.includes('agama') || name.includes('pai') || name.includes('isla') || name.includes('moral')) {
+    return { icon: '🌙', badge: 'AGAMA / MORAL', color: '#9C27B0', darkColor: '#4A148C', bgColor: '#F3E5F5' };
+  }
+  if (name.includes('sampah') || name.includes('sirkular') || name.includes('lingkungan') || name.includes('daur ulang')) {
+    return { icon: '♻️', badge: 'SIRKULAR & LINGKUNGAN', color: '#00BCD4', darkColor: '#006064', bgColor: '#E0F7FA' };
+  }
+
+  const defaults: SubjectMeta[] = [
+    { icon: '🧪', badge: `MISI #${levelId}`, color: '#4CAF50', darkColor: '#1B5E20', bgColor: '#E8F5E9' },
+    { icon: '📐', badge: `MISI #${levelId}`, color: '#2196F3', darkColor: '#0D47A1', bgColor: '#E3F2FD' },
+    { icon: '📚', badge: `MISI #${levelId}`, color: '#FF9800', darkColor: '#E65100', bgColor: '#FFF3E0' },
+    { icon: '🇮🇩', badge: `MISI #${levelId}`, color: '#E91E63', darkColor: '#880E4F', bgColor: '#FCE4EC' },
+  ];
+  return defaults[(levelId - 1) % defaults.length];
+}
+

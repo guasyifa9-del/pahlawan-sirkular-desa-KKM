@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { Team, Level, GameSettings } from '../types';
 import { defaultTeams } from '../utils/storage';
 import { MIN_TEAMS, MAX_TEAMS } from '../constants';
+import { getSubjectMeta } from '../utils/helpers';
 import { AVATAR_OPTIONS } from './TeamAvatars';
 import { Mascot } from './Mascots';
 import { Plus, Trash2, Play, Users, Trophy, Sparkles, BookOpen, Layers, Zap, Shuffle } from 'lucide-react';
@@ -78,10 +79,10 @@ export const SetupScreen = ({
             </div>
             <div>
               <h1 className="text-2xl md:text-3xl font-black text-[#1B5E20] uppercase tracking-tight">
-                Pahlawan Sirkular Desa
+                Game Kuis Interaktif Sekolah
               </h1>
               <p className="text-xs md:text-sm font-bold text-slate-600">
-                Team Battle Edition • Classroom Interactive Quiz Game
+                Team Battle Edition • Multi-Mata Pelajaran (IPAS, Matematika, B. Indo, PKn, PAI & Sirkular)
               </p>
             </div>
           </div>
@@ -119,7 +120,7 @@ export const SetupScreen = ({
             }`}
           >
             <Trophy className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF9800]" />
-            2. Pilih Misi / Level
+            2. Pilih Pelajaran / Level
           </button>
         </div>
 
@@ -206,7 +207,7 @@ export const SetupScreen = ({
                 onClick={() => setActiveTab('mission')}
                 className="px-8 py-3 bg-[#4CAF50] hover:bg-emerald-600 text-white font-black text-base rounded-2xl shadow-[4px_4px_0px_#2E7D32] border-3 border-[#2E7D32] flex items-center gap-2 cursor-pointer"
               >
-                Lanjut ke Pilih Misi →
+                Lanjut ke Pilih Pelajaran →
               </button>
             </div>
           </motion.div>
@@ -222,8 +223,8 @@ export const SetupScreen = ({
                   <Zap className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-black text-sm text-slate-900">Mode Durasi Sosialisasi:</h4>
-                  <p className="text-xs font-bold text-slate-600">Pilih jumlah soal per sesi agar peserta tidak bosan.</p>
+                  <h4 className="font-black text-sm text-slate-900">Mode Durasi Kuis:</h4>
+                  <p className="text-xs font-bold text-slate-600">Pilih jumlah soal per sesi agar pas dengan durasi jam pelajaran.</p>
                 </div>
               </div>
 
@@ -263,49 +264,53 @@ export const SetupScreen = ({
             </div>
 
             <p className="text-xs md:text-sm font-bold text-slate-700 text-center">
-              Pilih fokus materi kuis untuk sesi bertanding kelas hari ini:
+              Pilih fokus mata pelajaran kuis untuk sesi bertanding kelas hari ini:
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {levels.map((level) => {
                 const isSelected = selectedLevelId === level.level_id;
+                const subject = getSubjectMeta(level.theme_name, level.level_id);
+
                 return (
                   <div
                     key={level.level_id}
                     onClick={() => setSelectedLevelId(level.level_id)}
-                    className={`cursor-pointer rounded-2xl p-5 border-[4px] transition-all relative overflow-hidden flex flex-col justify-between ${
+                    className={`cursor-pointer rounded-2xl p-5 border-[4px] transition-all relative overflow-hidden flex flex-col justify-between hover:scale-[1.02] ${
                       isSelected
-                        ? 'bg-[#FFEB3B] border-[#FBC02D] shadow-[6px_6px_0px_#F9A825] scale-105'
+                        ? 'bg-[#FFEB3B] border-[#FBC02D] shadow-[6px_6px_0px_#F9A825] scale-[1.02]'
                         : 'bg-white border-[#4CAF50] hover:border-[#2E7D32] shadow-[4px_4px_0px_#2E7D32]'
                     }`}
                   >
-                    {/* Top Mascot Accent */}
-                    <div className="flex items-center justify-between mb-2">
+                    {/* Top Mascot & Subject Badge Accent */}
+                    <div className="flex items-center justify-between mb-3">
                       <span
-                        className="px-3 py-1 rounded-full text-xs font-black text-white border border-black/10 shadow-sm"
-                        style={{ backgroundColor: level.theme_color }}
+                        className="px-3 py-1 rounded-full text-xs font-black text-white border border-black/10 shadow-sm flex items-center gap-1.5"
+                        style={{ backgroundColor: subject.color }}
                       >
-                        Misi #{level.level_id}
+                        <span>{subject.icon}</span>
+                        <span>{subject.badge}</span>
                       </span>
                       <Mascot name={level.mascot} size="sm" showBadge={false} />
                     </div>
 
-                    <div>
-                      <h3 className="text-lg font-black text-slate-900 leading-tight mb-2">
+                    <div className="my-1">
+                      <h3 className="text-base md:text-lg font-black text-slate-900 leading-tight mb-1.5">
                         {level.theme_name}
                       </h3>
-                      <p className="text-xs text-slate-700 font-bold">
-                        {level.questions.length} Soal Interaktif • Maskot: {level.mascot}
+                      <p className="text-xs text-slate-600 font-bold flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full inline-block" style={{ backgroundColor: subject.color }} />
+                        {level.questions.length} Soal Pilihan Ganda • Maskot: {level.mascot}
                       </p>
                     </div>
 
                     <div className="mt-4 pt-3 border-t-2 border-slate-200 flex items-center justify-between">
-                      <span className="text-[11px] font-black text-[#1B5E20]">
-                        {level.questions.length} Pertanyaan SD
+                      <span className="text-[11px] font-black text-[#1B5E20] flex items-center gap-1">
+                        <span>🎯</span> Level #{level.level_id}
                       </span>
                       <span
-                        className={`w-6 h-6 rounded-full flex items-center justify-center font-black text-xs ${
-                          isSelected ? 'bg-[#4CAF50] text-white' : 'bg-slate-200 text-slate-600'
+                        className={`w-7 h-7 rounded-full flex items-center justify-center font-black text-xs border-2 ${
+                          isSelected ? 'bg-[#4CAF50] border-[#2E7D32] text-white shadow-sm' : 'bg-slate-100 border-slate-300 text-slate-400'
                         }`}
                       >
                         {isSelected ? '✓' : ''}

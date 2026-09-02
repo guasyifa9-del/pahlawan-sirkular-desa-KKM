@@ -57,22 +57,22 @@ export const Navbar = ({
         <div
           className="w-9 h-9 sm:w-11 sm:h-11 bg-white rounded-full flex items-center justify-center font-black text-xl sm:text-2xl shadow-[2px_2px_0px_#2E7D32] border-4 border-[#FFEB3B] shrink-0"
         >
-          🗑️
+          {levelTitle ? '🎯' : '🎓'}
         </div>
         <div className="flex-1 text-center sm:text-left">
           <h1 className="font-black text-sm sm:text-xl uppercase leading-tight tracking-tight flex flex-wrap justify-center sm:justify-start items-center gap-1 sm:gap-2 drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
-            Pahlawan Sirkular Desa
+            Game Kuis Interaktif
             <span className="inline-block px-2 sm:px-3 py-0.5 text-[9px] sm:text-[11px] font-black bg-[#FFEB3B] text-[#1B5E20] rounded-full border border-black/10 sm:border-2 sm:border-[#FBC02D] shadow-sm sm:shadow-[2px_2px_0px_#F9A825]">
               TEAM BATTLE
             </span>
           </h1>
           {levelTitle ? (
             <p className="text-[10px] sm:text-xs font-bold text-yellow-200 truncate w-full max-w-[250px] sm:max-w-md mx-auto sm:mx-0">
-              {levelTitle}
+              📖 Pelajaran: {levelTitle}
             </p>
           ) : (
             <p className="text-[10px] sm:text-xs font-bold text-white/90 hidden sm:block">
-              TEMA: PENGELOLAAN SAMPAH ORGANIK & ANORGANIK
+              Multi-Mata Pelajaran (IPAS, Matematika, B. Indo, PKn, PAI & Sirkular)
             </p>
           )}
         </div>
