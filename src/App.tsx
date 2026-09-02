@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import questionsDataJson from './data/questions.json';
 import { QuizData, Team, GamePhase, Level, Question, GameSettings } from './types';
 import { MARATHON_LEVEL_ID } from './constants';
-import { getQuestionsForLevel, createGameStatePayload } from './utils/helpers';
+import { getQuestionsForLevel, createGameStatePayload, buildMaterialsFromQuizData } from './utils/helpers';
 import {
   loadTeams,
   saveTeams,
@@ -248,7 +248,7 @@ export default function App() {
         {phase === 'material' && (
           <MaterialScreen
             initialPillarId={selectedLevelId}
-            customMaterials={customMaterialsData}
+            customMaterials={customMaterialsData || (customQuizData ? buildMaterialsFromQuizData(customQuizData) : null)}
             onBack={() => setPhase('setup')}
           />
         )}

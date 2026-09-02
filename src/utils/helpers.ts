@@ -145,3 +145,48 @@ export function getSubjectMeta(themeName: string, levelId: number): SubjectMeta 
   return defaults[(levelId - 1) % defaults.length];
 }
 
+/**
+ * Membuat data materi secara otomatis dari data soal & pesan edukasi jika URL materi khusus tidak diset.
+ */
+export function buildMaterialsFromQuizData(quizData: QuizData): PillarMaterial[] {
+  const colors = ['#4CAF50', '#2196F3', '#FF9800', '#9C27B0', '#E91E63', '#00BCD4'];
+  const darkColors = ['#1B5E20', '#0D47A1', '#E65100', '#4A148C', '#880E4F', '#006064'];
+  const bgColors = ['#E8F5E9', '#E3F2FD', '#FFF3E0', '#F3E5F5', '#FCE4EC', '#E0F7FA'];
+
+  return quizData.levels.map((level, idx) => {
+    const meta = getSubjectMeta(level.theme_name, level.level_id);
+    const colorIdx = idx % colors.length;
+
+    const sections = level.questions.map((q, qIdx) => ({
+      title: `Topik Pembelajaran #${qIdx + 1}: ${q.question.slice(0, 45)}...`,
+      icon: meta.icon,
+      points: [
+        `❓ **Pertanyaan**: ${q.question}`,
+        `💡 **Penjelasan & Kunci**: ${q.education_message || `Jawaban yang tepat adalah pilihan ${q.correct_answer}.`}`
+      ]
+    }));
+
+    const keyTerms = level.questions.map((q, qIdx) => ({
+      term: `Konsep #${qIdx + 1}`,
+      definition: q.education_message || q.question
+    }));
+
+    return {
+      pillarId: level.level_id,
+      title: level.theme_name,
+      subtitle: `Rangkuman materi pembelajaran untuk ${level.theme_name}`,
+      icon: meta.icon,
+      mascot: level.mascot,
+      themeColor: meta.color || colors[colorIdx],
+      themeDark: meta.darkColor || darkColors[colorIdx],
+      themeBg: meta.bgColor || bgColors[colorIdx],
+      sections,
+      funFacts: [
+        { icon: '🎯', text: `Terdapat ${level.questions.length} soal latihan interaktif pada mata pelajaran ini.` },
+        { icon: '📖', text: 'Pahami setiap pesan edukasi untuk mendapatkan poin maksimal saat bertanding!' }
+      ],
+      keyTerms
+    };
+  });
+}
+
